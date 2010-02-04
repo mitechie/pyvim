@@ -11,11 +11,16 @@
 " ,s - toggle spellcheck
 " ,c  - open the quickfix window
 " ,cc - close the quickfix window
+" ,t - toggle nerdtree
 "
 " Y  - yank to the end of the line
 "
 " <CR> - create newline with enter key
 " C-n  - clear search
+"
+" gc        - comment the highlighted text
+" gcc       - comment out the current line
+"
 "
 " Windows
 " ctrl-jklm - swap to that split without the ctrl-w
@@ -24,6 +29,7 @@
 " F2        - close current split
 "
 syntax on          " syntax highlighing
+filetype plugin indent on
 
 " In GVIM
 if has("gui_running")
@@ -223,5 +229,13 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " http://www.vim.org/scripts/script.php?script_id=2050
 nmap <silent> <Leader>b :LustyJuggler<CR>
 
+" NERDTree
+" http://www.vim.org/scripts/script.php?script_id=1658
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+map <leader>t :NERDTree<CR>
 
+" tComment
+" http://www.vim.org/scripts/script.php?script_id=1173
+" gc        - comment the highlighted text
+" gcc       - comment out the current line
 
