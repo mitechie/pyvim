@@ -1,4 +1,9 @@
 " ==================================================
+" Dependencies
+" ==================================================
+" Pep8 : http://pypi.python.org/pypi/pep8
+
+" ==================================================
 " Shortcuts Documented
 " ==================================================
 " jj - esc
@@ -6,6 +11,7 @@
 " ,v - load .vimrc
 " ,V - reload .vimrc
 " ,m - run make
+" ,M - alt make for filetype (pep8 for python, etc)
 " ,y - yank to clipboard
 " ,p - paste from clipboard
 " ,s - toggle spellcheck
@@ -87,7 +93,6 @@ set sm                  " show matching braces, somewhat annoying...
 set whichwrap=b,s,h,l,<,>,[,]   
 
 set tags=tags;/         " search for tags file in parent directories
- 
 
 " ==================================================
 " Basic Maps
@@ -197,7 +202,6 @@ set complete+=t
 
 
 " ==================================================
-"
 " Filetypes
 " ==================================================
 
@@ -223,6 +227,11 @@ au! BufRead,BufNewFile *.txt set nonu
 " '/bin/' in the path
 au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
+" ==================================================
+" Python
+" ==================================================
+au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " ==================================================
 " HTML
@@ -255,4 +264,8 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=1173
 " gc        - comment the highlighted text
 " gcc       - comment out the current line
+
+" pep8
+" http://www.vim.org/scripts/script.php?script_id=2914
+" set to <leader>M in the actual plugin
 
