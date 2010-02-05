@@ -17,6 +17,8 @@
 "
 " <CR> - create newline with enter key
 " C-n  - clear search
+" C-l  - Omnicompletion
+" C-p  - ctags completion
 "
 " gc        - comment the highlighted text
 " gcc       - comment out the current line
@@ -180,7 +182,22 @@ set ignorecase          " ignore case when searching
 
 nmap <silent> <C-N> :silent noh<CR>
 
+
 " ==================================================
+" Completion
+" ==================================================
+
+" complete on ctrl-l
+inoremap <C-l> <C-x><C-o>
+
+set complete+=.
+set complete+=k
+set complete+=b
+set complete+=t
+
+
+" ==================================================
+"
 " Filetypes
 " ==================================================
 
