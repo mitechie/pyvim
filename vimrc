@@ -94,6 +94,11 @@ set whichwrap=b,s,h,l,<,>,[,]
 
 set tags=tags;/         " search for tags file in parent directories
 
+" complete in vim commands with a nice list
+set wildmenu
+set wildmode=longest,list
+set wildignore+=*.pyc
+
 " ==================================================
 " Basic Maps
 " ==================================================
@@ -233,6 +238,17 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
+
+" ==================================================
+" Javascript
+" ==================================================
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
+
+au BufRead *.js set makeprg=jslint\ %
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+
 " ==================================================
 " HTML
 " ==================================================
@@ -269,3 +285,10 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=2914
 " set to <leader>M in the actual plugin
 
+" python folding jpythonfold.vim
+" http://www.vim.org/scripts/script.php?script_id=2527
+" Setup as ftplugin/python.vim for auto loading
+
+" Supertab
+" http://www.vim.org/scripts/script.php?script_id=182
+" :SuperTabHelp
