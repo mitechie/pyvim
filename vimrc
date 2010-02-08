@@ -29,6 +29,10 @@
 " gc        - comment the highlighted text
 " gcc       - comment out the current line
 "
+" ,,   - complete snippet
+" ,,   - tab to next section of snippet
+" ,n   - list available snippets for this filetype
+"
 "
 " Windows
 " ctrl-jklm - swap to that split without the ctrl-w
@@ -292,3 +296,8 @@ map <leader>t :NERDTree<CR>
 " Supertab
 " http://www.vim.org/scripts/script.php?script_id=182
 " :SuperTabHelp
+
+" SnipMate
+" 
+" ,, - complete and tab to next section
+" ,n - show list of snippets for this filetype
