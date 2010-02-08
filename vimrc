@@ -3,6 +3,7 @@
 " ==================================================
 " Pep8 : http://pypi.python.org/pypi/pep8
 " pylint script
+" curl - Gist plugin
 "
 
 " ==================================================
@@ -35,6 +36,8 @@
 " ,,   - tab to next section of snippet
 " ,n   - list available snippets for this filetype
 "
+" ,pw  - search for keyword in pydocs
+" ,pW  - search any pydoc for this keyword
 "
 " Windows
 " ctrl-jklm - swap to that split without the ctrl-w
@@ -42,6 +45,10 @@
 " alt-,/.   - move the split vertically
 " F2        - close current split
 "
+" :Gist
+" :Gist -p (private)
+" :Gist XXXX (fetch Gist XXXX and load)
+
 syntax on          " syntax highlighing
 filetype plugin indent on
 
@@ -300,7 +307,6 @@ map <leader>t :NERDTree<CR>
 " Search python docs for the keyword
 " <leader>pw - search for docs for what's under cursor
 " <leader>pW - search for any docs with this keyword mentioned
-source ~/.vim/plugin/pydoc.vim
 
 " Supertab
 " http://www.vim.org/scripts/script.php?script_id=182
@@ -310,3 +316,12 @@ source ~/.vim/plugin/pydoc.vim
 " http://www.vim.org/scripts/script.php?script_id=2540
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
+
+" Gist - github pastbin
+" http://www.vim.org/scripts/script.php?script_id=2423
+" :Gist
+" :Gist -p (private)
+" :Gist XXXX (fetch Gist XXXX and load)
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
