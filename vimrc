@@ -2,6 +2,8 @@
 " Dependencies
 " ==================================================
 " Pep8 : http://pypi.python.org/pypi/pep8
+" pylint script
+"
 
 " ==================================================
 " Shortcuts Documented
@@ -254,7 +256,7 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 
 " ==================================================
-" HTML
+" Syntax Files
 " ==================================================
 
 " xml.vim
@@ -293,11 +295,18 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=2527
 " Setup as ftplugin/python.vim for auto loading
 
+" PyDoc
+" http://www.vim.org/scripts/script.php?script_id=910
+" Search python docs for the keyword
+" <leader>pw - search for docs for what's under cursor
+" <leader>pW - search for any docs with this keyword mentioned
+source ~/.vim/plugin/pydoc.vim
+
 " Supertab
 " http://www.vim.org/scripts/script.php?script_id=182
 " :SuperTabHelp
 
 " SnipMate
-" 
+" http://www.vim.org/scripts/script.php?script_id=2540
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
