@@ -299,6 +299,10 @@ map <leader>t :NERDTree<CR>
 " gc        - comment the highlighted text
 " gcc       - comment out the current line
 
+" XML Completion
+" http://www.vim.org/scripts/script.php?script_id=301
+" close xml/html tags like <div>
+
 " pep8
 " http://www.vim.org/scripts/script.php?script_id=2914
 " set to <leader>M in the actual plugin
