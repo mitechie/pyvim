@@ -48,6 +48,8 @@
 " :Gist
 " :Gist -p (private)
 " :Gist XXXX (fetch Gist XXXX and load)
+"
+" :PG XXXX php - vimgrep the project for XXXX in .php files
 
 syntax on          " syntax highlighing
 filetype plugin indent on
@@ -327,4 +329,26 @@ map <leader>t :NERDTree<CR>
 " :Gist XXXX (fetch Gist XXXX and load)
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
+
+" ==================================================
+" Custom Functions
+" ==================================================
+
+function! PGrep(pattern, ...)
+    let pattern = a:pattern
+
+    if a:0 == 0
+        let ext = '*'
+    else
+        let ext = a:1
+    endif
+
+    let proj_path = system("echo $PROJ_PATH | tr -d '\n'")
+
+    let search_path = proj_path . "/**/*." . ext
+
+    :execute "vimgrep /" . pattern . "/j " search_path | :copen
+endfunction
+command! -nargs=* PG :call PGrep(<f-args>)
+
 
