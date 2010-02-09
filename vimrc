@@ -226,6 +226,9 @@ set complete+=t
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * lcd %:p:h 
 
+" make the smarty .tpl files html files for our purposes
+au BufNewFile,BufRead *.tpl set filetype=html
+
 " Filetypes (au = autocmd)
 au filetype help set nonumber      " no line numbers when viewing help
 au filetype help nnoremap <buffer><cr> <c-]>   " Enter selects subject
