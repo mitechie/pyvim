@@ -16,6 +16,7 @@
 " ,m - run make
 " ,M - alt make for filetype (pep8 for python, etc)
 " ,y - yank to clipboard
+" ,Y - yank current line to clipboard
 " ,p - paste from clipboard
 " ,s - toggle spellcheck
 " ,c  - open the quickfix window
@@ -49,7 +50,7 @@
 " :Gist -p (private)
 " :Gist XXXX (fetch Gist XXXX and load)
 "
-" :PG XXXX php - vimgrep the project for XXXX in .php files
+" :PG XXXX php - vimgrep the project for XXXX in .php files requird workit
 
 syntax on          " syntax highlighing
 filetype plugin indent on
@@ -131,17 +132,19 @@ imap <c-c> <Nop>
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" Y yanks to the end of the line
-nmap Y y$
-
 " Run Make with ctrl-m or ,m
 map <silent> <leader>m :make<CR>
 
 " quick insertion of a newline
 nmap <CR> o<Esc>            
 
+" Y yanks to the end of the line
+nmap Y y$
+
 " shortcuts for copying to clipboard
 nmap <leader>y "*y 
+" copy the current line to the clipboard
+nmap <leader>Y "*yy     
 nmap <leader>p "*p
 
 " shortcut to toggle spelling
