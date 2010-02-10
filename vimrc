@@ -348,8 +348,9 @@ function! PGrep(pattern, ...)
     endif
 
     let proj_path = system("echo $PROJ_PATH | tr -d '\n'")
+    :exe 'cd '.proj_path
 
-    let search_path = proj_path . "/**/*." . ext
+    let search_path = "**/*." . ext
 
     :execute "vimgrep /" . pattern . "/j " search_path | :copen
 endfunction
