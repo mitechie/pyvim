@@ -32,13 +32,12 @@ fi
 
 HOSTNAME=$1
 
-rsync -avz --delete -e ssh ~/configs/pyvim $HOSTNAME:~
+rsync -avz --delete -e ssh ~/configs/pyvim $HOSTNAME:~/
 
-ssh $HOSTNAME 'ln -s vim/vim .vim && ln -s vim/vimrc .vimrc'
+ssh $HOSTNAME 'rm -r ~/.vimrc ~/.vim ; ln -s pyvim/vim .vim && ln -s pyvim/vimrc .vimrc'
 
 # make sure we restore our local vim config to master
 git checkout master
-
 
 # @todo move the above into a shell function, setup a list of hosts, and loop
 # through them to sync all hosts at once
