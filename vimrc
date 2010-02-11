@@ -51,6 +51,14 @@
 " :Gist XXXX (fetch Gist XXXX and load)
 "
 " :PG XXXX php - vimgrep the project for XXXX in .php files requird workit
+"
+" TwitVim
+" <F7>/<F8> - load timelines
+" :Bpost... - post
+" ,g        - load user's timeline
+" ,d        - direct message
+" ,@        - load the parent to this post
+" :IsGd {url} - shorten the url
 
 syntax on          " syntax highlighing
 filetype plugin indent on
@@ -336,6 +344,12 @@ map <leader>t :NERDTree<CR>
 " :Gist XXXX (fetch Gist XXXX and load)
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
+
+" TwitVim
+" http://vim.sourceforge.net/scripts/script.php?script_id=2204
+" Twitter/Identica client for vim
+" F7/F8 for loading identica/twitter
+source ~/.vim/twitvim.vim
 
 " ==================================================
 " Custom Functions
