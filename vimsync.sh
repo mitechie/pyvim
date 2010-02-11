@@ -32,9 +32,9 @@ fi
 
 HOSTNAME=$1
 
-rsync -avz --delete -e ssh ~/configs/pyvim $HOSTNAME:~
+rsync -avz --delete -e ssh ~/configs/pyvim $HOSTNAME:~/configs/
 
-ssh $HOSTNAME 'ln -s vim/vim .vim && ln -s vim/vimrc .vimrc'
+ssh $HOSTNAME 'rm -r ~/.vimrc ~/.vim && ln -s ~/configs/pyvim/vim .vim && ln -s ~/configs/pyvim/vimrc .vimrc'
 
 # make sure we restore our local vim config to master
 git checkout master
