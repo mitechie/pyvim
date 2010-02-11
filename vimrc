@@ -1,10 +1,7 @@
 " ==================================================
 " Dependencies
 " ==================================================
-" Pep8 : http://pypi.python.org/pypi/pep8
-" pylint script
-" curl - Gist plugin
-"
+" None for portable version
 
 " ==================================================
 " Shortcuts Documented
@@ -30,8 +27,8 @@
 " C-l  - Omnicompletion
 " C-p  - ctags completion
 "
-" gc        - comment the highlighted text
-" gcc       - comment out the current line
+" gc   - comment the highlighted text
+" gcc  - comment out the current line
 "
 " ,,   - complete snippet
 " ,,   - tab to next section of snippet
@@ -46,20 +43,8 @@
 " alt-,/.   - move the split vertically
 " F2        - close current split
 "
-" :Gist
-" :Gist -p (private)
-" :Gist XXXX (fetch Gist XXXX and load)
-"
 " :PG XXXX php - vimgrep the project for XXXX in .php files requird workit
 "
-" TwitVim
-" <F7>/<F8> - load timelines
-" :Bpost... - post
-" ,g        - load user's timeline
-" ,d        - direct message
-" ,@        - load the parent to this post
-" :IsGd {url} - shorten the url
-
 syntax on          " syntax highlighing
 filetype plugin indent on
 
@@ -314,10 +299,6 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=301
 " close xml/html tags like <div>
 
-" pep8
-" http://www.vim.org/scripts/script.php?script_id=2914
-" set to <leader>M in the actual plugin
-
 " python folding jpythonfold.vim
 " http://www.vim.org/scripts/script.php?script_id=2527
 " Setup as ftplugin/python.vim for auto loading
@@ -336,20 +317,6 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=2540
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
-
-" Gist - github pastbin
-" http://www.vim.org/scripts/script.php?script_id=2423
-" :Gist
-" :Gist -p (private)
-" :Gist XXXX (fetch Gist XXXX and load)
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-
-" TwitVim
-" http://vim.sourceforge.net/scripts/script.php?script_id=2204
-" Twitter/Identica client for vim
-" F7/F8 for loading identica/twitter
-source ~/.vim/twitvim.vim
 
 " ==================================================
 " Custom Functions
