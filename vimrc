@@ -4,7 +4,6 @@
 " Pep8 : http://pypi.python.org/pypi/pep8
 " pylint script
 " curl - Gist plugin
-"
 
 " ==================================================
 " Shortcuts Documented
@@ -355,6 +354,9 @@ source ~/.vim/twitvim.vim
 " Custom Functions
 " ==================================================
 
+" PGrep function to basically do vimgrep within the predefined $PROJ_DIR from
+" workit scripts. 
+" :PG support php -- search the project for /support/j **/*.php
 function! PGrep(pattern, ...)
     let pattern = a:pattern
 
