@@ -4,6 +4,7 @@
 " Pep8 : http://pypi.python.org/pypi/pep8
 " pylint script
 " curl - Gist plugin
+" python-rope - for ropevim plugin
 
 " ==================================================
 " Shortcuts Documented
@@ -240,6 +241,7 @@ autocmd BufEnter * lcd %:p:h
 
 " make the smarty .tpl files html files for our purposes
 au BufNewFile,BufRead *.tpl set filetype=html
+au BufNewFile,BufRead *.mako set filetype=mako
 
 " Filetypes (au = autocmd)
 au filetype help set nonumber      " no line numbers when viewing help
@@ -349,6 +351,11 @@ let g:gist_open_browser_after_post = 1
 " Twitter/Identica client for vim
 " F7/F8 for loading identica/twitter
 source ~/.vim/twitvim.vim
+
+" RopeVim
+" http://rope.sourceforge.net/ropevim.html
+" Refactoring engine using python-rope
+source /usr/local/lib/python2.6/dist-packages/ropevim-0.3_rc-py2.6.egg/ropevim.vim
 
 " ==================================================
 " Custom Functions
