@@ -41,6 +41,8 @@
 " ,pw  - search for keyword in pydocs
 " ,pW  - search any pydoc for this keyword
 "
+" F11  - toggle :set paste on/off
+"
 " Windows
 " ctrl-jklm - swap to that split without the ctrl-w
 " +/-       - shrink the current split verticall
@@ -60,6 +62,11 @@
 " ,d        - direct message
 " ,@        - load the parent to this post
 " :IsGd {url} - shorten the url
+"
+" -----------------------------------------
+" Printing:
+" set printoptions=paper:A4,syntax:y,wrap:y
+" http://vim.runpaint.org/basics/printing/
 
 syntax on          " syntax highlighing
 filetype plugin indent on
@@ -123,6 +130,9 @@ set tags=tags;/         " search for tags file in parent directories
 set wildmenu
 set wildmode=longest,list
 set wildignore+=*.pyc
+
+" set the paste toggle key
+set pastetoggle=<F11>
 
 " ==================================================
 " Basic Maps
