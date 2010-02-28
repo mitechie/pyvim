@@ -134,6 +134,9 @@ set wildignore+=*.pyc
 " set the paste toggle key
 set pastetoggle=<F11>
 
+" replace the default grep program with ack
+set grepprg=ack-grep
+
 " ==================================================
 " Basic Maps
 " ==================================================
