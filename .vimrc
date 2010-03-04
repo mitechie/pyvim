@@ -271,7 +271,7 @@ autocmd BufEnter * lcd %:p:h
 
 " make the smarty .tpl files html files for our purposes
 au BufNewFile,BufRead *.tpl set filetype=html
-au BufNewFile,BufRead *.mako set filetype=mako
+au BufNewFile,BufRead,BufEnter *.mako set filetype=mako
 
 " Filetypes (au = autocmd)
 au filetype help set nonumber      " no line numbers when viewing help
