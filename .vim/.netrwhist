@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/rharding/configs/pyvim'
 let g:netrw_dirhist_2='/home/rharding/configs/dotfiles/awesome/autostart'
 let g:netrw_dirhist_3='/home/rharding/.offlineimap'
 let g:netrw_dirhist_4='/home/rharding/configs/dotfiles/awesome/autostart'
+let g:netrw_dirhist_5='/home/rharding/src/gitosis_private/gitosis-admin'
+let g:netrw_dirhist_6='/etc/apache2/sites-enabled'
+let g:netrw_dirhist_7='/home/rharding/src/hotalert/qsat_hotalert_app/docs'
