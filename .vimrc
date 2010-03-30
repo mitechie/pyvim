@@ -382,10 +382,39 @@ let g:gist_open_browser_after_post = 1
 " F7/F8 for loading identica/twitter
 source ~/.vim/twitvim.vim
 
-" RopeVim
+" opeVim
 " http://rope.sourceforge.net/ropevim.html
 " Refactoring engine using python-rope
 source /usr/local/lib/python2.6/dist-packages/ropevim-0.3_rc-py2.6.egg/ropevim.vim
+let ropevim_codeassist_maxfixes=10
+let ropevim_vim_completion=1
+let ropevim_guess_project=1
+let ropevim_enable_autoimport=1
+let ropevim_extended_complete=1
+
+function! CustomCodeAssistInsertMode()
+    call RopeCodeAssistInsertMode()
+    if pumvisible()
+        return "\<C-L>\<Down>"
+    else
+        return ''
+    endif
+endfunction
+
+function! TabWrapperComplete()
+    let cursyn = synID(line('.'), col('.') - 1, 1)
+    if pumvisible()
+        return "\<C-Y>"
+    endif
+    if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$' || cursyn != 0
+        return "\<Tab>"
+    else
+        return "\<C-R>=CustomCodeAssistInsertMode()\<CR>"
+    endif
+endfunction
+
+inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
+
 
 " ==================================================
 " Custom Functions
