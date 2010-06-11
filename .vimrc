@@ -73,19 +73,22 @@ filetype plugin indent on
 
 " In GVIM
 if has("gui_running")
-    set guifont=Liberation\ Mono\ 8" use this font 
+    set guifont=Liberation\ Mono\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
     set keymodel=
     set mousehide
-    colorscheme hornet
+    colorscheme lucius
+    colorscheme vilight
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
 else
     set background=dark   " adapt colors for dark background
     colorscheme hornet
+    colorscheme lucius
+    set t_Co=256
 endif
 
 " ==================================================
@@ -122,7 +125,7 @@ set expandtab           " tabs are converted to spaces, use only when required
 set sm                  " show matching braces, somewhat annoying...
 
 " move freely between files
-set whichwrap=b,s,h,l,<,>,[,]   
+set whichwrap=b,s,h,l,<,>,[,]
 
 set tags=tags;/         " search for tags file in parent directories
 
@@ -158,7 +161,7 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 map <silent> <leader>m :make<CR>
 
 " quick insertion of a newline
-nmap <CR> o<Esc>            
+nmap <CR> o<Esc>
 
 " Y yanks to the end of the line
 nmap Y y$
@@ -167,7 +170,7 @@ nmap Y y$
 nmap <leader>y "*y
 
 " copy the current line to the clipboard
-nmap <leader>Y "*yy     
+nmap <leader>Y "*yy
 nmap <leader>p "*p
 
 " show the registers from things cut/yanked
@@ -244,9 +247,17 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 " Press Ctrl-N to turn off highlighting.
 set hlsearch            " highlight searches
 set incsearch           " do incremental searching
-set ignorecase          " ignore case when searching 
+set ignorecase          " ignore case when searching
 
 nmap <silent> <C-N> :silent noh<CR>
+
+
+" Highlight end of line whitespace.
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" Clean all end of line extra whitespace with ,S
+:nnoremap <silent><leader>S :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 
 " ==================================================
@@ -267,7 +278,7 @@ set complete+=t
 " ==================================================
 
 " Auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h 
+autocmd BufEnter * lcd %:p:h
 
 " make the smarty .tpl files html files for our purposes
 au BufNewFile,BufRead *.tpl set filetype=html
@@ -282,12 +293,12 @@ au filetype help nnoremap <buffer><bs> <c-T>   " Backspace to go back
 "without linex numbers
 augroup mail
     autocmd!
-    autocmd FileType mail set textwidth=70 wrap nonumber nocursorline 
+    autocmd FileType mail set textwidth=70 wrap nonumber nocursorline
 augroup END
 
 " If we're editing a .txt file then skip line numbers
 au! BufRead,BufNewFile *.txt set nonu
- 
+
 " automatically give executable permissions if file begins with #! and contains
 " '/bin/' in the path
 au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
@@ -315,7 +326,7 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 " xml.vim
 " http://github.com/sukima/xmledit/
-" % jump between '<' and '>' within the tag 
+" % jump between '<' and '>' within the tag
 " finish a tag '>'
 " press '>' twice it will complete and cursor in the middle
 
@@ -421,7 +432,7 @@ inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
 " ==================================================
 
 " PGrep function to basically do vimgrep within the predefined $PROJ_DIR from
-" workit scripts. 
+" workit scripts.
 " :PG support php -- search the project for /support/j **/*.php
 function! PGrep(pattern, ...)
     let pattern = a:pattern
