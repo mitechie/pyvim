@@ -81,6 +81,7 @@ if has("gui_running")
     set mousehide
     colorscheme lucius
     colorscheme vilight
+    colorscheme underwater-mod
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
