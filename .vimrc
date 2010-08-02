@@ -322,6 +322,13 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 
 " ==================================================
+" HTML
+" ==================================================
+" enable a shortcut for tidy using ~/.tidyrc config
+map <Leader>T :!tidy -config ~/.tidyrc<cr><cr> 
+
+
+" ==================================================
 " Syntax Files
 " ==================================================
 
@@ -397,7 +404,7 @@ source ~/.vim/twitvim.vim
 " opeVim
 " http://rope.sourceforge.net/ropevim.html
 " Refactoring engine using python-rope
-source /usr/local/lib/python2.6/dist-packages/ropevim-0.3_rc-py2.6.egg/ropevim.vim
+source /usr/local/ropevim.vim
 let ropevim_codeassist_maxfixes=10
 let ropevim_vim_completion=1
 let ropevim_guess_project=1
