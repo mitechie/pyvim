@@ -34,6 +34,12 @@
 " gc        - comment the highlighted text
 " gcc       - comment out the current line
 "
+" cs"(      - replace the " with (
+" ysiw"     - wrap current text object with "
+" yss"      - wrap current line with "
+" S         - in visual mode surroud with something
+" ds(       - remove wrapping ( from text
+"
 " ,,   - complete snippet
 " ,,   - tab to next section of snippet
 " ,n   - list available snippets for this filetype
@@ -386,6 +392,14 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=2540
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
+
+" Surround
+" http://www.vim.org/scripts/script.php?script_id=1697
+" default shortcuts
+
+" Pylint
+" http://www.vim.org/scripts/script.php?script_id=891
+" default config for underlines of syntax errors in gvim 
 
 " Gist - github pastbin
 " http://www.vim.org/scripts/script.php?script_id=2423
