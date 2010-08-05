@@ -197,6 +197,7 @@ nmap <leader>9 "9p
 
 " shortcut to toggle spelling
 nmap <leader>s :setlocal spell! spelllang=en_us<CR>
+set spellfile=~/.vim/dict.add
 
 " shortcuts to open/close the quickfix window
 nmap <leader>c :copen<CR>

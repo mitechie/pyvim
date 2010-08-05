@@ -187,6 +187,7 @@ hi Todo             ctermfg=228             ctermbg=NONE            cterm=underl
 " word not recognized
 hi SpellBad         guisp=#ee0000                                   gui=undercurl
 hi SpellBad                                 ctermbg=196             cterm=undercurl
+hi SpellBad         ctermfg=225             ctermbg=196             cterm=undercurl
 " word not capitalized
 hi SpellCap         guisp=#eeee00                                   gui=undercurl
 hi SpellCap                                 ctermbg=226             cterm=undercurl
