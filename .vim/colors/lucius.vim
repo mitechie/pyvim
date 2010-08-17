@@ -187,7 +187,6 @@ hi Todo             ctermfg=228             ctermbg=NONE            cterm=underl
 " word not recognized
 hi SpellBad         guisp=#ee0000                                   gui=undercurl
 hi SpellBad                                 ctermbg=196             cterm=undercurl
-hi SpellBad         ctermfg=225             ctermbg=196             cterm=undercurl
 " word not capitalized
 hi SpellCap         guisp=#eeee00                                   gui=undercurl
 hi SpellCap                                 ctermbg=226             cterm=undercurl
@@ -260,6 +259,9 @@ hi WarningMsg       ctermfg=173                                     cterm=none
 " current match in the wildmenu completion
 hi WildMenu         guifg=#cae682           guibg=#363946           gui=bold,underline
 hi WildMenu         ctermfg=16              ctermbg=186             cterm=bold
+" color column highlighting
+hi ColorColumn      guifg=NONE              guibg=#403630           gui=none
+hi ColorColumn      ctermfg=NONE            ctermbg=94              cterm=none
 
 
 " Diff
@@ -275,7 +277,7 @@ hi DiffDelete       guifg=#6c6661           guibg=#3c3631           gui=none
 hi DiffDelete       ctermfg=fg              ctermbg=58              cterm=none
 " changed text within line
 hi DiffText         guifg=#f05060           guibg=#4a343a           gui=bold
-hi DiffText         ctermfg=203             ctermbg=52             cterm=bold
+hi DiffText         ctermfg=203             ctermbg=52              cterm=bold
 
 
 " Folds
@@ -348,3 +350,4 @@ hi Visual           ctermfg=NONE            ctermbg=24
 " visual mode selection when vim is not owning the selection (x11 only)
 hi VisualNOS        guifg=fg                                        gui=underline
 hi VisualNOS        ctermfg=fg                                      cterm=underline
+

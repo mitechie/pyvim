@@ -1,3 +1,4 @@
+" http://github.com/mitechie/pyvim
 " ==================================================
 " Dependencies
 " ==================================================
@@ -19,6 +20,7 @@
 " ,Y - yank current line to clipboard
 " ,p - paste from clipboard
 " ,s - toggle spellcheck
+" ,S - remove end of line spaces
 " ,c  - open the quickfix window
 " ,cc - close the quickfix window
 " ,t - toggle nerdtree
@@ -85,15 +87,12 @@ if has("gui_running")
     set background=dark   " adapt colors for background
     set keymodel=
     set mousehide
-    colorscheme lucius
-    colorscheme vilight
     colorscheme underwater-mod
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
 else
     set background=dark   " adapt colors for dark background
-    colorscheme hornet
     colorscheme lucius
     set t_Co=256
 endif
@@ -197,7 +196,12 @@ nmap <leader>9 "9p
 
 " shortcut to toggle spelling
 nmap <leader>s :setlocal spell! spelllang=en_us<CR>
+
+" setup a custom dict for spelling
+" zg = add word to dict
+" zw = mark word as not spelled correctly (remove)
 set spellfile=~/.vim/dict.add
+
 
 " shortcuts to open/close the quickfix window
 nmap <leader>c :copen<CR>
@@ -211,7 +215,11 @@ nmap <leader>cc :cclose<CR>
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
-map <c-h> <c-w>h
+imap <c-h> <c-w>h
+
+" Hints for other movements
+" <c-w><c-r> rotate window to next spot
+" <c-w><c-x> swap window with current one
 
 " and lets make these all work in insert mode too ( <C-O> makes next cmd
 " happen as if in command mode )
@@ -256,6 +264,7 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 set hlsearch            " highlight searches
 set incsearch           " do incremental searching
 set ignorecase          " ignore case when searching
+set smartcase           " if searching and search contains upper case, make case sensitive search
 
 nmap <silent> <C-N> :silent noh<CR>
 
@@ -332,7 +341,7 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " HTML
 " ==================================================
 " enable a shortcut for tidy using ~/.tidyrc config
-map <Leader>T :!tidy -config ~/.tidyrc<cr><cr> 
+map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 
 
 " ==================================================
@@ -400,7 +409,7 @@ map <leader>t :NERDTree<CR>
 
 " Pylint
 " http://www.vim.org/scripts/script.php?script_id=891
-" default config for underlines of syntax errors in gvim 
+" default config for underlines of syntax errors in gvim
 
 " Gist - github pastbin
 " http://www.vim.org/scripts/script.php?script_id=2423
@@ -416,7 +425,7 @@ let g:gist_open_browser_after_post = 1
 " F7/F8 for loading identica/twitter
 source ~/.vim/twitvim.vim
 
-" opeVim
+" RopeVim
 " http://rope.sourceforge.net/ropevim.html
 " Refactoring engine using python-rope
 source /usr/local/ropevim.vim

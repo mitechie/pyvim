@@ -206,6 +206,7 @@ TwitVim-timeline-commands	twitvim.txt	/*TwitVim-timeline-commands*
 TwitVim-tips	twitvim.txt	/*TwitVim-tips*
 TwitVim-update-commands	twitvim.txt	/*TwitVim-update-commands*
 TwitVim-utility	twitvim.txt	/*TwitVim-utility*
+cs	surround.txt	/*cs*
 drawit	DrawIt.txt	/*drawit*
 drawit-a	DrawIt.txt	/*drawit-a*
 drawit-b	DrawIt.txt	/*drawit-b*
@@ -233,6 +234,7 @@ drawit-stop	DrawIt.txt	/*drawit-stop*
 drawit-usage	DrawIt.txt	/*drawit-usage*
 drawit-visblock	DrawIt.txt	/*drawit-visblock*
 drawit.txt	DrawIt.txt	/*drawit.txt*
+ds	surround.txt	/*ds*
 g:SuperTabCompletionContexts	supertab.txt	/*g:SuperTabCompletionContexts*
 g:SuperTabContextDefaultCompletionType	supertab.txt	/*g:SuperTabContextDefaultCompletionType*
 g:SuperTabDefaultCompletionType	supertab.txt	/*g:SuperTabDefaultCompletionType*
@@ -255,6 +257,8 @@ hl-twitterReply	twitvim.txt	/*hl-twitterReply*
 hl-twitterTime	twitvim.txt	/*hl-twitterTime*
 hl-twitterTitle	twitvim.txt	/*hl-twitterTitle*
 hl-twitterUser	twitvim.txt	/*hl-twitterUser*
+i_CTRL-G_S	surround.txt	/*i_CTRL-G_S*
+i_CTRL-G_s	surround.txt	/*i_CTRL-G_s*
 i_CTRL-R_<Tab>	snipMate.txt	/*i_CTRL-R_<Tab>*
 list-snippets	snipMate.txt	/*list-snippets*
 multi_snip	snipMate.txt	/*multi_snip*
@@ -295,6 +299,14 @@ supertab-midword	supertab.txt	/*supertab-midword*
 supertab-options	supertab.txt	/*supertab-options*
 supertab-usage	supertab.txt	/*supertab-usage*
 supertab.txt	supertab.txt	/*supertab.txt*
+surround	surround.txt	/*surround*
+surround-author	surround.txt	/*surround-author*
+surround-customizing	surround.txt	/*surround-customizing*
+surround-issues	surround.txt	/*surround-issues*
+surround-mappings	surround.txt	/*surround-mappings*
+surround-replacements	surround.txt	/*surround-replacements*
+surround-targets	surround.txt	/*surround-targets*
+surround.txt	surround.txt	/*surround.txt*
 tComment-Installation	tComment.txt	/*tComment-Installation*
 tComment-Key-Bindings	tComment.txt	/*tComment-Key-Bindings*
 tComment-Usage	tComment.txt	/*tComment-Usage*
@@ -322,8 +334,15 @@ twitvim_proxy_login_b64	twitvim.txt	/*twitvim_proxy_login_b64*
 twitvim_retweet_format	twitvim.txt	/*twitvim_retweet_format*
 twitvim_trim_login	twitvim.txt	/*twitvim_trim_login*
 twitvim_urlborg_key	twitvim.txt	/*twitvim_urlborg_key*
+vS	surround.txt	/*vS*
+vgS	surround.txt	/*vgS*
+vs	surround.txt	/*vs*
 xml-plugin-callbacks	xml-plugin.txt	/*xml-plugin-callbacks*
 xml-plugin-html	xml-plugin.txt	/*xml-plugin-html*
 xml-plugin-mappings	xml-plugin.txt	/*xml-plugin-mappings*
 xml-plugin-settings	xml-plugin.txt	/*xml-plugin-settings*
 xml-plugin.txt	xml-plugin.txt	/*xml-plugin.txt*
+yS	surround.txt	/*yS*
+ySS	surround.txt	/*ySS*
+ys	surround.txt	/*ys*
+yss	surround.txt	/*yss*
