@@ -2,7 +2,7 @@
 
 # add to ~/bin: ln -s ~/configs/pyvim/vimsync.sh ~/bin/vimsync.sh
 
-# Sync my vim config to a remote host specified. 
+# Sync my vim config to a remote host specified.
 # Steps:
 #   1. cd ~/configs/pyvim
 #   2. git co portable
@@ -25,7 +25,7 @@ git checkout $VIMBRANCH
 
 # get the hostname
 if [ $# -ne 1 ]
-then 
+then
     echo "Usage: vimsync HOSTNAME"
     return 65
 fi
