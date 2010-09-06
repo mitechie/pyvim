@@ -100,7 +100,7 @@ endif
 " ==================================================
 " Basic Settings
 " ==================================================
-let mapleader=","     " change the leader to be a comma vs slash
+let mapleader=","       " change the leader to be a comma vs slash
 set textwidth=80        " Try this out to see how textwidth helps
 set ch=3                " Make command line two lines high
 set ls=2                " allways show status line
@@ -173,7 +173,7 @@ nmap <CR> o<Esc>
 nmap Y y$
 
 " shortcuts for copying to clipboard
-nmap <leader>y "*y
+nmap <leader>y "*y 
 
 " copy the current line to the clipboard
 nmap <leader>Y "*yy
@@ -215,7 +215,7 @@ nmap <leader>cc :cclose<CR>
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
-imap <c-h> <c-w>h
+map <c-h> <c-w>h
 
 " Hints for other movements
 " <c-w><c-r> rotate window to next spot
@@ -357,6 +357,10 @@ map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 " jinja.vim
 " http://www.vim.org/scripts/script.php?script_id=1856
 " syntax file for jinja1 and 2
+
+" mako.vim
+" http://www.vim.org/scripts/script.php?script_id=2663
+" syntax support for mako code
 
 " ==================================================
 " Plugins
