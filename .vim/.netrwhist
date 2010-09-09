@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/rharding/src/quipp/quipp/test'
+let g:netrw_dirhist_2='/home/rharding/configs/pyvim'
+let g:netrw_dirhist_3='/home/rharding/configs/bin'

@@ -2,7 +2,7 @@
 
 # add to ~/bin: ln -s ~/configs/pyvim/vimsync.sh ~/bin/vimsync.sh
 
-# Sync my vim config to a remote host specified. 
+# Sync my vim config to a remote host specified.
 # Steps:
 #   1. cd ~/configs/pyvim
 #   2. git co portable
@@ -25,20 +25,25 @@ git checkout $VIMBRANCH
 
 # get the hostname
 if [ $# -ne 1 ]
-then 
+then
     echo "Usage: vimsync HOSTNAME"
     return 65
 fi
 
 HOSTNAME=$1
 
+<<<<<<< HEAD
 rsync -avz --delete -e ssh ~/configs/pyvim $HOSTNAME:~/configs/
 
 ssh $HOSTNAME 'rm -r ~/.vimrc ~/.vim && ln -s ~/configs/pyvim/vim .vim && ln -s ~/configs/pyvim/vimrc .vimrc'
+=======
+rsync -avz --delete -e ssh ~/configs/pyvim $HOSTNAME:~/
+
+ssh $HOSTNAME 'rm -r ~/.vimrc ~/.vim ; ln -s pyvim/vim .vim && ln -s pyvim/vimrc .vimrc'
+>>>>>>> master
 
 # make sure we restore our local vim config to master
 git checkout master
-
 
 # @todo move the above into a shell function, setup a list of hosts, and loop
 # through them to sync all hosts at once

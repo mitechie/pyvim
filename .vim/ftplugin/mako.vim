@@ -171,7 +171,7 @@ function s:ParseTag( )
     let @" = ""
     execute "normal! \"xy%%"
     let ltag = @"
-    if (&filetype == 'html' || &filetype == 'xhtml') && (!exists ("g:xml_no_html"))
+    if (&filetype == 'html' || &filetype == 'xhtml' || &filetype == 'mako') && (!exists ("g:xml_no_html"))
         let html_mode = 1
         let ltag = substitute (ltag, '[^[:graph:]]\+', ' ', 'g')
         let ltag = substitute (ltag, '<\s*\([^[:alnum:]_:\-[:blank:]]\=\)\s*\([[:alnum:]_:\-]\+\)\>', '<\1\2', '')

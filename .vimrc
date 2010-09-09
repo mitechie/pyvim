@@ -1,3 +1,4 @@
+" http://github.com/mitechie/pyvim
 " ==================================================
 " Dependencies
 " ==================================================
@@ -16,9 +17,11 @@
 " ,Y - yank current line to clipboard
 " ,p - paste from clipboard
 " ,s - toggle spellcheck
+" ,S - remove end of line spaces
 " ,c  - open the quickfix window
 " ,cc - close the quickfix window
 " ,t - toggle nerdtree
+" ,r - view registers
 "
 " Y  - yank to the end of the line
 "
@@ -30,12 +33,20 @@
 " gc   - comment the highlighted text
 " gcc  - comment out the current line
 "
+" cs"(      - replace the " with (
+" ysiw"     - wrap current text object with "
+" yss"      - wrap current line with "
+" S         - in visual mode surroud with something
+" ds(       - remove wrapping ( from text
+"
 " ,,   - complete snippet
 " ,,   - tab to next section of snippet
 " ,n   - list available snippets for this filetype
 "
 " ,pw  - search for keyword in pydocs
 " ,pW  - search any pydoc for this keyword
+"
+" F11  - toggle :set paste on/off
 "
 " Windows
 " ctrl-jklm - swap to that split without the ctrl-w
@@ -50,25 +61,26 @@ filetype plugin indent on
 
 " In GVIM
 if has("gui_running")
-    set guifont=Liberation\ Mono\ 8" use this font 
+    set guifont=Liberation\ Mono\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
     set keymodel=
     set mousehide
-    colorscheme hornet
+    colorscheme underwater-mod
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
 else
     set background=dark   " adapt colors for dark background
-    colorscheme hornet
+    colorscheme lucius
+    set t_Co=256
 endif
 
 " ==================================================
 " Basic Settings
 " ==================================================
-let mapleader=","     " change the leader to be a comma vs slash
+let mapleader=","       " change the leader to be a comma vs slash
 set textwidth=80        " Try this out to see how textwidth helps
 set ch=3                " Make command line two lines high
 set ls=2                " allways show status line
@@ -99,7 +111,7 @@ set expandtab           " tabs are converted to spaces, use only when required
 set sm                  " show matching braces, somewhat annoying...
 
 " move freely between files
-set whichwrap=b,s,h,l,<,>,[,]   
+set whichwrap=b,s,h,l,<,>,[,]
 
 set tags=tags;/         " search for tags file in parent directories
 
@@ -107,6 +119,12 @@ set tags=tags;/         " search for tags file in parent directories
 set wildmenu
 set wildmode=longest,list
 set wildignore+=*.pyc
+
+" set the paste toggle key
+set pastetoggle=<F11>
+
+" replace the default grep program with ack
+set grepprg=ack-grep
 
 " ==================================================
 " Basic Maps
@@ -129,19 +147,41 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 map <silent> <leader>m :make<CR>
 
 " quick insertion of a newline
-nmap <CR> o<Esc>            
+nmap <CR> o<Esc>
 
 " Y yanks to the end of the line
 nmap Y y$
 
 " shortcuts for copying to clipboard
 nmap <leader>y "*y 
+
 " copy the current line to the clipboard
-nmap <leader>Y "*yy     
+nmap <leader>Y "*yy
 nmap <leader>p "*p
+
+" show the registers from things cut/yanked
+nmap <leader>r :registers<CR>
+
+" map the various registers to a leader shortcut for pasting from them
+nmap <leader>0 "0p
+nmap <leader>1 "1p
+nmap <leader>2 "2p
+nmap <leader>3 "3p
+nmap <leader>4 "4p
+nmap <leader>5 "5p
+nmap <leader>6 "6p
+nmap <leader>7 "7p
+nmap <leader>8 "8p
+nmap <leader>9 "9p
 
 " shortcut to toggle spelling
 nmap <leader>s :setlocal spell! spelllang=en_us<CR>
+
+" setup a custom dict for spelling
+" zg = add word to dict
+" zw = mark word as not spelled correctly (remove)
+set spellfile=~/.vim/dict.add
+
 
 " shortcuts to open/close the quickfix window
 nmap <leader>c :copen<CR>
@@ -156,6 +196,10 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+" Hints for other movements
+" <c-w><c-r> rotate window to next spot
+" <c-w><c-x> swap window with current one
 
 " and lets make these all work in insert mode too ( <C-O> makes next cmd
 " happen as if in command mode )
@@ -199,9 +243,18 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 " Press Ctrl-N to turn off highlighting.
 set hlsearch            " highlight searches
 set incsearch           " do incremental searching
-set ignorecase          " ignore case when searching 
+set ignorecase          " ignore case when searching
+set smartcase           " if searching and search contains upper case, make case sensitive search
 
 nmap <silent> <C-N> :silent noh<CR>
+
+
+" Highlight end of line whitespace.
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" Clean all end of line extra whitespace with ,S
+:nnoremap <silent><leader>S :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 
 " ==================================================
@@ -222,10 +275,11 @@ set complete+=t
 " ==================================================
 
 " Auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h 
+autocmd BufEnter * lcd %:p:h
 
 " make the smarty .tpl files html files for our purposes
 au BufNewFile,BufRead *.tpl set filetype=html
+au BufNewFile,BufRead,BufEnter *.mako set filetype=mako
 
 " Filetypes (au = autocmd)
 au filetype help set nonumber      " no line numbers when viewing help
@@ -236,12 +290,12 @@ au filetype help nnoremap <buffer><bs> <c-T>   " Backspace to go back
 "without linex numbers
 augroup mail
     autocmd!
-    autocmd FileType mail set textwidth=70 wrap nonumber nocursorline 
+    autocmd FileType mail set textwidth=70 wrap nonumber nocursorline
 augroup END
 
 " If we're editing a .txt file then skip line numbers
 au! BufRead,BufNewFile *.txt set nonu
- 
+
 " automatically give executable permissions if file begins with #! and contains
 " '/bin/' in the path
 au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
@@ -264,18 +318,29 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 
 " ==================================================
+" HTML
+" ==================================================
+" enable a shortcut for tidy using ~/.tidyrc config
+map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
+
+
+" ==================================================
 " Syntax Files
 " ==================================================
 
 " xml.vim
 " http://github.com/sukima/xmledit/
-" % jump between '<' and '>' within the tag 
+" % jump between '<' and '>' within the tag
 " finish a tag '>'
 " press '>' twice it will complete and cursor in the middle
 
 " jinja.vim
 " http://www.vim.org/scripts/script.php?script_id=1856
 " syntax file for jinja1 and 2
+
+" mako.vim
+" http://www.vim.org/scripts/script.php?script_id=2663
+" syntax support for mako code
 
 " ==================================================
 " Plugins
@@ -318,10 +383,35 @@ map <leader>t :NERDTree<CR>
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
 
+" Surround
+" http://www.vim.org/scripts/script.php?script_id=1697
+" default shortcuts
+
+" Pylint
+" http://www.vim.org/scripts/script.php?script_id=891
+" default config for underlines of syntax errors in gvim
+
+function! TabWrapperComplete()
+    let cursyn = synID(line('.'), col('.') - 1, 1)
+    if pumvisible()
+        return "\<C-Y>"
+    endif
+    if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$' || cursyn != 0
+        return "\<Tab>"
+    else
+        return "\<C-R>=CustomCodeAssistInsertMode()\<CR>"
+    endif
+endfunction
+
+inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
+
 " ==================================================
 " Custom Functions
 " ==================================================
 
+" PGrep function to basically do vimgrep within the predefined $PROJ_DIR from
+" workit scripts.
+" :PG support php -- search the project for /support/j **/*.php
 function! PGrep(pattern, ...)
     let pattern = a:pattern
 
