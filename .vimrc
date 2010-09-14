@@ -173,7 +173,7 @@ nmap <CR> o<Esc>
 nmap Y y$
 
 " shortcuts for copying to clipboard
-nmap <leader>y "*y 
+nmap <leader>y "*y
 
 " copy the current line to the clipboard
 nmap <leader>Y "*yy
@@ -461,7 +461,6 @@ function! TabWrapperComplete()
 endfunction
 
 inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
-
 
 " ==================================================
 " Custom Functions
