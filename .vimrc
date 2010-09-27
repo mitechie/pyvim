@@ -19,12 +19,14 @@
 " ,y - yank to clipboard
 " ,Y - yank current line to clipboard
 " ,p - paste from clipboard
+" ,q - reformat text paragraph
 " ,s - toggle spellcheck
 " ,S - remove end of line spaces
 " ,c  - open the quickfix window
 " ,cc - close the quickfix window
 " ,t - toggle nerdtree
 " ,r - view registers
+" ,t - collapse/fold html tag
 "
 " Y  - yank to the end of the line
 "
@@ -97,6 +99,7 @@ else
     set t_Co=256
 endif
 
+
 " ==================================================
 " Basic Settings
 " ==================================================
@@ -145,6 +148,16 @@ set pastetoggle=<F11>
 
 " replace the default grep program with ack
 set grepprg=ack-grep
+
+" ==================================================
+" Config Specific Settings
+" ==================================================
+
+" If we're running in vimdiff then tweak out settings a bit
+if &diff
+   set nospell
+endif
+
 
 " ==================================================
 " Basic Maps
@@ -206,6 +219,11 @@ set spellfile=~/.vim/dict.add
 " shortcuts to open/close the quickfix window
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
+
+" for when we forget to use sudo to open/edit a file
+cmap w!! w !sudo tee % >/dev/null
+
+nnoremap <leader>q gqap
 
 " ==================================================
 " Windows / Splits
@@ -343,6 +361,8 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " enable a shortcut for tidy using ~/.tidyrc config
 map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 
+" enable html tag folding with ,t
+nnoremap <leader>f Vatzf
 
 " ==================================================
 " Syntax Files
