@@ -78,8 +78,15 @@
 " set printoptions=paper:A4,syntax:y,wrap:y
 " http://vim.runpaint.org/basics/printing/
 
-syntax on          " syntax highlighing
-filetype plugin indent on
+" bootstrap the pathogen part of the config right away
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+" now proceed as usual
+syntax on                 " syntax highlighing
+filetype on               " try to detect filetypes
+filetype plugin indent on " enable loading indent file for filetype
 
 " In GVIM
 if has("gui_running")
@@ -132,6 +139,8 @@ set matchtime=3
 set spell
 set expandtab           " tabs are converted to spaces, use only when required
 set sm                  " show matching braces, somewhat annoying...
+
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " move freely between files
 set whichwrap=b,s,h,l,<,>,[,]
@@ -307,6 +316,13 @@ set complete+=k
 set complete+=b
 set complete+=t
 
+set completeopt+=menuone,longest
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabMidWordCompletion = 1
+
 
 " ==================================================
 " Filetypes
@@ -374,10 +390,6 @@ nnoremap <leader>f Vatzf
 " finish a tag '>'
 " press '>' twice it will complete and cursor in the middle
 
-" jinja.vim
-" http://www.vim.org/scripts/script.php?script_id=1856
-" syntax file for jinja1 and 2
-
 " mako.vim
 " http://www.vim.org/scripts/script.php?script_id=2663
 " syntax support for mako code
@@ -400,13 +412,10 @@ map <leader>t :NERDTree<CR>
 " gc        - comment the highlighted text
 " gcc       - comment out the current line
 
-" XML Completion
-" http://www.vim.org/scripts/script.php?script_id=301
-" close xml/html tags like <div>
-
 " pep8
 " http://www.vim.org/scripts/script.php?script_id=2914
-" set to <leader>M in the actual plugin
+autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>
+
 
 " python folding jpythonfold.vim
 " http://www.vim.org/scripts/script.php?script_id=2527
@@ -426,13 +435,19 @@ map <leader>t :NERDTree<CR>
 " http://www.vim.org/scripts/script.php?script_id=2540
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
+ino <silent> <leader>, <c-r>=TriggerSnippet()<cr>
+snor <silent> <leader>, <esc>i<right><c-r>=TriggerSnippet()<cr>
+ino <silent> <leader>\< <c-r>=BackwardsSnippet()<cr>
+snor <silent> <leader>\< <esc>i<right><c-r>=BackwardsSnippet()<cr>
+ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
+
 
 " Surround
 " http://www.vim.org/scripts/script.php?script_id=1697
 " default shortcuts
 
-" Pylint
-" http://www.vim.org/scripts/script.php?script_id=891
+" Pyflakes
+" http://www.vim.org/scripts/script.php?script_id=3161
 " default config for underlines of syntax errors in gvim
 
 " Gist - github pastbin
@@ -447,7 +462,7 @@ let g:gist_open_browser_after_post = 1
 " http://vim.sourceforge.net/scripts/script.php?script_id=2204
 " Twitter/Identica client for vim
 " F7/F8 for loading identica/twitter
-source ~/.vim/twitvim.vim
+"source ~/.vim/twitvim.vim
 
 " RopeVim
 " http://rope.sourceforge.net/ropevim.html
@@ -459,28 +474,28 @@ let ropevim_guess_project=1
 let ropevim_enable_autoimport=1
 let ropevim_extended_complete=1
 
-function! CustomCodeAssistInsertMode()
-    call RopeCodeAssistInsertMode()
-    if pumvisible()
-        return "\<C-L>\<Down>"
-    else
-        return ''
-    endif
-endfunction
-
-function! TabWrapperComplete()
-    let cursyn = synID(line('.'), col('.') - 1, 1)
-    if pumvisible()
-        return "\<C-Y>"
-    endif
-    if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$' || cursyn != 0
-        return "\<Tab>"
-    else
-        return "\<C-R>=CustomCodeAssistInsertMode()\<CR>"
-    endif
-endfunction
-
-inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
+" function! CustomCodeAssistInsertMode()
+"     call RopeCodeAssistInsertMode()
+"     if pumvisible()
+"         return "\<C-L>\<Down>"
+"     else
+"         return ''
+"     endif
+" endfunction
+"
+" function! TabWrapperComplete()
+"     let cursyn = synID(line('.'), col('.') - 1, 1)
+"     if pumvisible()
+"         return "\<C-Y>"
+"     endif
+"     if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$' || cursyn != 0
+"         return "\<Tab>"
+"     else
+"         return "\<C-R>=CustomCodeAssistInsertMode()\<CR>"
+"     endif
+" endfunction
+"
+" inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
 
 " ==================================================
 " Custom Functions
@@ -507,4 +522,14 @@ function! PGrep(pattern, ...)
 endfunction
 command! -nargs=* PG :call PGrep(<f-args>)
 
+" javascript folding
+function! JavaScriptFold()
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
