@@ -13,6 +13,7 @@ import subprocess
 CONFIG_FILES = ['.vimrc', '.vim']
 HOME_PATH = os.path.expanduser('~')
 
+
 def removefile(filename):
     removing_link = "%s/%s" % (HOME_PATH, filename)
     ret = subprocess.call(["rm", "-rf", removing_link])
@@ -31,9 +32,11 @@ def linkfile(filename):
             link_location)
     return
 
+
 def empty_bundles():
     """Need to clear out the bundles to make this reusable"""
     subprocess.call('rm -rf bundle/*', shell=True)
+
 
 def remove_bundles():
     """Remove the bundle dir from the .vim dir"""
@@ -58,8 +61,9 @@ def install_bundles():
         is_located, link_location)
     return
 
+
 def fix_xmledit():
-    """In order to have xmledit in html you need to link the file to html.vim"""
+    """In order xmledit in html you need to link the file to html.vim"""
     xmledit_path = "$HOME/.vim/bundle/xmledit.git/ftplugin"
     xml = os.path.join(xmledit_path, 'xml.vim')
     html = os.path.join(xmledit_path, 'html.vim')
@@ -79,4 +83,3 @@ empty_bundles()
 remove_bundles()
 install_bundles()
 fix_xmledit()
-
