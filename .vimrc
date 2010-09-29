@@ -368,8 +368,6 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 au BufRead *.js set makeprg=jslint\ %
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
 
 " ==================================================
 " HTML
@@ -435,12 +433,13 @@ autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>
 " http://www.vim.org/scripts/script.php?script_id=2540
 " ,, - complete and tab to next section
 " ,n - show list of snippets for this filetype
+
+" bundle/snipmate/after/plugin/snipmate
 ino <silent> <leader>, <c-r>=TriggerSnippet()<cr>
 snor <silent> <leader>, <esc>i<right><c-r>=TriggerSnippet()<cr>
 ino <silent> <leader>\< <c-r>=BackwardsSnippet()<cr>
 snor <silent> <leader>\< <esc>i<right><c-r>=BackwardsSnippet()<cr>
 ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
-
 
 " Surround
 " http://www.vim.org/scripts/script.php?script_id=1697

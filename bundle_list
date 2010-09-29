@@ -11,3 +11,4 @@ http://github.com/vim-scripts/surround.vim.git
 http://github.com/kevinw/pyflakes-vim.git
 http://github.com/vim-scripts/Gist.vim.git
 http://github.com/scrooloose/nerdtree.git
+git://github.com/mitechie/pyflakes-pathogen.git
