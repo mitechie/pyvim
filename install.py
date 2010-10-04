@@ -48,9 +48,10 @@ def install_bundles():
     bundle_list = open('bundle_list')
     git_cmd = '/usr/bin/git clone {0} $HOME/configs/pyvim/bundle/{1}'
     for b in bundle_list:
-        dirname_idx = b.rfind('/') + 1
-        dirname = b[dirname_idx:].strip()
-        subprocess.call(git_cmd.format(b.strip(), dirname), shell=True)
+        if not b.startswith('#'):
+            dirname_idx = b.rfind('/') + 1
+            dirname = b[dirname_idx:].strip()
+            subprocess.call(git_cmd.format(b.strip(), dirname), shell=True)
 
     # and finally link to the .vim/bundle dir
     link_location = "%s/%s" % (HOME_PATH, '.vim/bundle')

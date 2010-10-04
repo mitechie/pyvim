@@ -357,9 +357,11 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " ==================================================
 " Python
 " ==================================================
-au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+au FileType python compiler pylint
+au BufReadPost quickfix map <buffer> <silent> <CR> :.cc <CR> :ccl
 
+" au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+" au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " ==================================================
 " Javascript

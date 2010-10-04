@@ -8,7 +8,7 @@ http://github.com/vim-scripts/pydoc.vim.git
 http://github.com/tsaleh/vim-supertab.git
 http://github.com/msanders/snipmate.vim.git
 http://github.com/vim-scripts/surround.vim.git
-http://github.com/kevinw/pyflakes-vim.git
 http://github.com/vim-scripts/Gist.vim.git
 http://github.com/scrooloose/nerdtree.git
 http://github.com/mitechie/pyflakes-pathogen.git
+#http://github.com/vim-scripts/pylint.vim.git
