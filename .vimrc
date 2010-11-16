@@ -83,6 +83,14 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Highlight end of line whitespace.
+" match WhitespaceEOL /\s\+$/
+au InsertEnter * match WhitespaceEOL /\s\+$/
+au InsertLeave * match WhitespaceEOL /\s\+$/
+
+" make sure our whitespace matching is setup before we do colorscheme tricks
+autocmd ColorScheme * highlight WhitespaceEOL ctermbg=red guibg=red
+
 " now proceed as usual
 syntax on                 " syntax highlighing
 filetype on               " try to detect filetypes
@@ -111,7 +119,7 @@ endif
 " Basic Settings
 " ==================================================
 let mapleader=","       " change the leader to be a comma vs slash
-set textwidth=80        " Try this out to see how textwidth helps
+set textwidth=79        " Try this out to see how textwidth helps
 set ch=3                " Make command line two lines high
 set ls=2                " allways show status line
 set tabstop=4           " numbers of spaces of tab character
@@ -295,11 +303,6 @@ set smartcase           " if searching and search contains upper case, make case
 
 nmap <silent> <C-N> :silent noh<CR>
 
-
-" Highlight end of line whitespace.
-highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
-
 " Clean all end of line extra whitespace with ,S
 :nnoremap <silent><leader>S :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
@@ -357,11 +360,10 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " ==================================================
 " Python
 " ==================================================
-au FileType python compiler pylint
 au BufReadPost quickfix map <buffer> <silent> <CR> :.cc <CR> :ccl
 
-" au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-" au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " ==================================================
 " Javascript
