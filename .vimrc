@@ -98,7 +98,7 @@ filetype plugin indent on " enable loading indent file for filetype
 
 " In GVIM
 if has("gui_running")
-    set guifont=Liberation\ Mono\ 8" use this font
+    set guifont=Cousine\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
@@ -304,8 +304,17 @@ set smartcase           " if searching and search contains upper case, make case
 nmap <silent> <C-N> :silent noh<CR>
 
 " Clean all end of line extra whitespace with ,S
-:nnoremap <silent><leader>S :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
+" Credit: voyeg3r https://github.com/mitechie/pyvim/issues/#issue/1
+" deletes excess space but maintains the list of jumps unchanged
+" for more details see: h keepjumps
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+map <silent><leader>S <esc>:keepjumps call CleanExtraSpaces()<cr>
 
 " ==================================================
 " Completion
