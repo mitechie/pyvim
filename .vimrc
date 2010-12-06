@@ -105,6 +105,7 @@ if has("gui_running")
     set keymodel=
     set mousehide
     colorscheme underwater-mod
+    colorscheme void
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -388,7 +389,7 @@ au BufRead *.js set makeprg=jslint\ %
 " enable a shortcut for tidy using ~/.tidyrc config
 map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 
-" enable html tag folding with ,t
+" enable html tag folding with ,f
 nnoremap <leader>f Vatzf
 
 " ==================================================
