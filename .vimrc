@@ -98,7 +98,7 @@ filetype plugin indent on " enable loading indent file for filetype
 
 " In GVIM
 if has("gui_running")
-    set guifont=Cousine\ 8" use this font
+    set guifont=Liberation\ Mono\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
