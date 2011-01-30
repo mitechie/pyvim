@@ -16,5 +16,5 @@ git://github.com/mitechie/pyflakes-pathogen.git
 #http://github.com/kevinw/pyflakes-vim.git
 http://github.com/tomtom/tlib_vim.git
 https://github.com/tpope/vim-fugitive.git
-https://mitechie@github.com/mitechie/vim-makegreen.git
+https://github.com/mitechie/vim-makegreen.git
 https://github.com/olethanh/Vim-nosecompiler.git
