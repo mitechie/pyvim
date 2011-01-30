@@ -76,14 +76,16 @@ def fix_xmledit():
     subprocess.call('ln -s {0} {1}'.format(xml, html), shell=True)
     subprocess.call('ln -s {0} {1}'.format(xml, mako), shell=True)
 
+
 def copy_custom_snippets():
     """We need to add our custom snippets after the plugin is downloaded/setup
-    
+
     """
     import glob, shutil, os
     copy_to = os.path.expanduser('~/.vim/bundle/snipmate.vim.git/snippets')
     for file in glob.glob("custom_snippets/*.snippets"):
         shutil.copy(file, copy_to)
+
 
 for conf_file in CONFIG_FILES:
     removefile(conf_file)

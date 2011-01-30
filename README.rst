@@ -14,6 +14,5 @@ plugins, and copy them over to the `.vim/bundle` directory.
 
 ToDo
 ----
-- need pylint or pyflakes preferably with highlighting in the page via spell 
 - need an upgrade script command to walk through the plugins and pull updates
 

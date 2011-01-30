@@ -2,4 +2,26 @@
 snippet dmp
 	log.debug(${1|somevar})
 
+snippet testfile
+	"""${1|Dockblock}"""
+	from unittest import TestCase
 
+	class Test${2|class}(TestCase):
+		"""${3|TestGroup}"""
+
+		def setUp(self):
+		    """Setup Tests"""
+			pass
+
+		def tearDown(self):
+			"""Tear down each test"""
+			pass
+
+snippet tst
+	def test_${1|method}(self):
+		"""${2|description}"""
+
+		assert ${3|Something}, "${4|Output}"
+
+snippet ass
+	assert ${1|condition}, "${2|explanation}"

@@ -121,7 +121,7 @@ endif
 " ==================================================
 let mapleader=","       " change the leader to be a comma vs slash
 set textwidth=79        " Try this out to see how textwidth helps
-set ch=3                " Make command line two lines high
+set ch=1                " Make command line two lines high
 set ls=2                " allways show status line
 set tabstop=4           " numbers of spaces of tab character
 set shiftwidth=4        " numbers of spaces to (auto)indent
@@ -237,6 +237,13 @@ set spellfile=~/.vim/dict.add
 " shortcuts to open/close the quickfix window
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
+
+nmap <leader>l :lopen<CR>
+nmap <leader>ll :lclose<CR>
+nmap <leader>ln :lN<CR>
+nmap <leader>lp :lN<CR>
+
+
 
 " for when we forget to use sudo to open/edit a file
 cmap w!! w !sudo tee % >/dev/null
@@ -372,7 +379,8 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " ==================================================
 au BufReadPost quickfix map <buffer> <silent> <CR> :.cc <CR> :ccl
 
-au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+" au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+au BufRead *.py compiler nose
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " ==================================================
@@ -417,7 +425,7 @@ nmap <silent> <Leader>b :LustyJuggler<CR>
 " NERDTree
 " http://www.vim.org/scripts/script.php?script_id=1658
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
-map <leader>t :NERDTree<CR>
+map <leader>a :NERDTree<CR>
 
 " tComment
 " http://www.vim.org/scripts/script.php?script_id=1173
@@ -462,6 +470,7 @@ ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
 " Pyflakes
 " http://www.vim.org/scripts/script.php?script_id=3161
 " default config for underlines of syntax errors in gvim
+let g:pyflakes_use_quickfix = 0
 
 " Gist - github pastbin
 " http://www.vim.org/scripts/script.php?script_id=2423
