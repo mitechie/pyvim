@@ -176,7 +176,6 @@ if &diff
    set nospell
 endif
 
-
 " ==================================================
 " Basic Maps
 " ==================================================
@@ -233,7 +232,6 @@ nmap <leader>s :setlocal spell! spelllang=en_us<CR>
 " zw = mark word as not spelled correctly (remove)
 set spellfile=~/.vim/dict.add
 
-
 " shortcuts to open/close the quickfix window
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
@@ -242,8 +240,6 @@ nmap <leader>l :lopen<CR>
 nmap <leader>ll :lclose<CR>
 nmap <leader>ln :lN<CR>
 nmap <leader>lp :lN<CR>
-
-
 
 " for when we forget to use sudo to open/edit a file
 cmap w!! w !sudo tee % >/dev/null
@@ -310,6 +306,9 @@ set ignorecase          " ignore case when searching
 set smartcase           " if searching and search contains upper case, make case sensitive search
 
 nmap <silent> <C-N> :silent noh<CR>
+
+" Search for potentially strange non-ascii characters
+map <leader>u :match Error /[\x7f-\xff]/<CR>
 
 " Clean all end of line extra whitespace with ,S
 " Credit: voyeg3r https://github.com/mitechie/pyvim/issues/#issue/1
@@ -519,6 +518,24 @@ let ropevim_extended_complete=1
 "
 " inoremap <buffer><silent><expr> <C-l> TabWrapperComplete()
 
+
+" vim-makegreen && vim-nosecompiler
+" unit testing python code in during editing
+" I use files in the same dir test_xxxx.*
+" if we're already on the test_xxx.py file, just rerun current test file
+" function MakeArgs()
+"     if empty(matchstr(expand('%'), 'test_'))
+"     " if no test_ on the filename, then add it to run tests
+"     let make_args = 'test_%'
+"     else
+"     let make_args = '%'
+"     endif
+" 
+"     :call MakeGreen(make_args)
+" endfunction
+" 
+" autocmd FileType python map <buffer> <leader>t :call MakeArgs()<CR>
+" 
 " ==================================================
 " Custom Functions
 " ==================================================
