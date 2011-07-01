@@ -18,3 +18,7 @@ http://github.com/tomtom/tlib_vim.git
 https://github.com/tpope/vim-fugitive.git
 https://github.com/reinh/vim-makegreen.git
 https://github.com/olethanh/Vim-nosecompiler.git
+https://github.com/ap/vim-css-color.git
+#https://github.com/vim-scripts/taglist.vim.git
+https://github.com/Bogdanp/quicksilver.vim.git
+git://github.com/majutsushi/tagbar

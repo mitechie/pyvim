@@ -98,14 +98,15 @@ filetype plugin indent on " enable loading indent file for filetype
 
 " In GVIM
 if has("gui_running")
-    set guifont=Liberation\ Mono\ 8" use this font
+    set guifont=Liberation\ Mono\ 7" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
     set keymodel=
     set mousehide
-    colorscheme underwater-mod
     colorscheme void
+    colorscheme lucius
+    colorscheme diablo3
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -194,7 +195,7 @@ map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " Run Make with ctrl-m or ,m
-map <silent> <leader>m :make<CR>
+map <silent> <leader>m :make<CR>:cw<CR>
 
 " quick insertion of a newline
 nmap <CR> o<Esc>
@@ -276,24 +277,24 @@ map <M-.> <C-W><
 noremap <f2> <Esc>:close<CR><Esc>
 
 " mapping to make movements operate on 1 screen line in wrap mode
-function! ScreenMovement(movement)
-   if &wrap
-      return "g" . a:movement
-   else
-      return a:movement
-   endif
-endfunction
-onoremap <silent> <expr> j ScreenMovement("j")
-onoremap <silent> <expr> k ScreenMovement("k")
-onoremap <silent> <expr> 0 ScreenMovement("0")
-onoremap <silent> <expr> ^ ScreenMovement("^")
-onoremap <silent> <expr> $ ScreenMovement("$")
-nnoremap <silent> <expr> j ScreenMovement("j")
-nnoremap <silent> <expr> k ScreenMovement("k")
-nnoremap <silent> <expr> 0 ScreenMovement("0")
-nnoremap <silent> <expr> ^ ScreenMovement("^")
-nnoremap <silent> <expr> $ ScreenMovement("$")
-
+" function! ScreenMovement(movement)
+"    if &wrap
+"       return "g" . a:movement
+"    else
+"       return a:movement
+"    endif
+" endfunction
+" onoremap <silent> <expr> j ScreenMovement("j")
+" onoremap <silent> <expr> k ScreenMovement("k")
+" onoremap <silent> <expr> 0 ScreenMovement("0")
+" onoremap <silent> <expr> ^ ScreenMovement("^")
+" onoremap <silent> <expr> $ ScreenMovement("$")
+" nnoremap <silent> <expr> j ScreenMovement("j")
+" nnoremap <silent> <expr> k ScreenMovement("k")
+" nnoremap <silent> <expr> 0 ScreenMovement("0")
+" nnoremap <silent> <expr> ^ ScreenMovement("^")
+" nnoremap <silent> <expr> $ ScreenMovement("$")
+"
 
 " ==================================================
 " Search
@@ -389,6 +390,29 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 au BufRead *.js set makeprg=jslint\ %
+au BufRead *.js set errorformat=%-P%f,
+                    \%-G/*jslint\ %.%#*/,
+                    \%*[\ ]%n\ %l\\,%c:\ %m,
+                    \%-G\ \ \ \ %.%#,
+                    \%-GNo\ errors\ found.,
+                    \%-Q
+
+" ==================================================
+" CSS
+" ==================================================
+
+au BufRead *.css set makeprg=csslint\ %
+au BufRead *.css set errorformat=%A%f:,%C%n:\ warning\ at\ line\ %l\\,\ col\ %c,%C%m,%C%.%#
+" au BufRead *.css set errorformat=%-Gcsslint:\ There%.%#,%A%f:,%C%n:\ %t%\\w%\\+\ at\ line %l\,\ col\ %c,%Z%m,%A%f:,%C%n:\ %t%\\w%\\+\ at\ line %l\,\ col\ %c,%C%m,%-Z%.%#,%-G%.%#
+
+
+" format
+" bookie.css:
+" 1: warning
+" Too many font-size declarations (13), abstraction needed.
+" bookie.css: 1: warning Too many font-size declarations (13), abstraction needed.
+" bookie.css: 2: warning at line 2, col 2 Rule is empty. BODY {
+
 
 " ==================================================
 " HTML
@@ -433,7 +457,7 @@ map <leader>a :NERDTree<CR>
 
 " pep8
 " http://www.vim.org/scripts/script.php?script_id=2914
-autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>
+autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>:cw<CR>
 
 
 " python folding jpythonfold.vim
@@ -475,6 +499,7 @@ let g:pyflakes_use_quickfix = 0
 " http://www.vim.org/scripts/script.php?script_id=2423
 " :Gist
 " :Gist -p (private)
+" :Gist -l
 " :Gist XXXX (fetch Gist XXXX and load)
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
@@ -488,12 +513,18 @@ let g:gist_open_browser_after_post = 1
 " RopeVim
 " http://rope.sourceforge.net/ropevim.html
 " Refactoring engine using python-rope
-source /usr/local/ropevim.vim
+source /usr/share/vim/vimfiles/plugin/ropevim.vim
 let ropevim_codeassist_maxfixes=10
 let ropevim_vim_completion=1
 let ropevim_guess_project=1
 let ropevim_enable_autoimport=1
 let ropevim_extended_complete=1
+
+" Tagbar
+" https://github.com/majutsushi/tagbar/
+" Show ctags info in the sidebar
+nmap <silent> <leader>l :TagbarToggle<CR>
+
 
 " function! CustomCodeAssistInsertMode()
 "     call RopeCodeAssistInsertMode()
@@ -530,12 +561,12 @@ let ropevim_extended_complete=1
 "     else
 "     let make_args = '%'
 "     endif
-" 
+"
 "     :call MakeGreen(make_args)
 " endfunction
-" 
+"
 " autocmd FileType python map <buffer> <leader>t :call MakeArgs()<CR>
-" 
+"
 " ==================================================
 " Custom Functions
 " ==================================================
