@@ -1,9 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/rharding/configs/pyvim/.vim/bundle/Vim-nosecompiler'
-let g:netrw_dirhist_2='/home/rharding/configs/pyvim/.vim/bundle/vim-makegreen'
-let g:netrw_dirhist_3='/home/rharding/configs/pyvim/.vim/bundle/Vim-nosecompiler'
-let g:netrw_dirhist_4='/home/rharding/.config/awesome'
-let g:netrw_dirhist_5='/home/rharding/configs/dotfiles/awesome/autostart'
-let g:netrw_dirhist_6='/var/lib/postgres/data'
-let g:netrw_dirhist_7='/home/rharding/Dropbox/docs/mug_loco'
+let g:netrw_dirhist_cnt =0

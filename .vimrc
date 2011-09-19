@@ -105,8 +105,9 @@ if has("gui_running")
     set keymodel=
     set mousehide
     colorscheme void
-    colorscheme lucius
     colorscheme diablo3
+    colorscheme lucius
+    colorscheme aldmeris 
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -151,6 +152,8 @@ set expandtab           " tabs are converted to spaces, use only when required
 set sm                  " show matching braces, somewhat annoying...
 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+hi StatusLine guifg=#fcf4ba guibg=#333333
+hi StatusLineNC guifg=#808080 guibg=#333333
 
 " move freely between files
 set whichwrap=b,s,h,l,<,>,[,]
@@ -180,7 +183,7 @@ endif
 " ==================================================
 " Basic Maps
 " ==================================================
-
+"
 " Maps for jj to act as Esc
 ino jj <esc>
 cno jj <c-c>
@@ -306,6 +309,7 @@ set incsearch           " do incremental searching
 set ignorecase          " ignore case when searching
 set smartcase           " if searching and search contains upper case, make case sensitive search
 
+nmap <silent> <C-N> :silent noh<CR>
 nmap <silent> <C-N> :silent noh<CR>
 
 " Search for potentially strange non-ascii characters
