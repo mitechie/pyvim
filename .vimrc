@@ -108,6 +108,7 @@ if has("gui_running")
     colorscheme diablo3
     colorscheme lucius
     colorscheme aldmeris 
+    colorscheme xorium
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
