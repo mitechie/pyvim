@@ -105,10 +105,10 @@ if has("gui_running")
     set background=dark   " adapt colors for background
     set keymodel=
     set mousehide
-    colorscheme void
-    colorscheme diablo3
     colorscheme lucius
+    colorscheme twilight
     colorscheme aldmeris 
+    colorscheme void
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -250,6 +250,10 @@ nmap <leader>lp :lN<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 nnoremap <leader>q gqap
+
+" Scroll the viewport 3 lines vs just 1 line at a time
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
 " ==================================================
 " Windows / Splits
