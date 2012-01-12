@@ -99,7 +99,7 @@ filetype plugin indent on " enable loading indent file for filetype
 " In GVIM
 if has("gui_running")
     set guifont=Liberation\ Mono\ 8" use this font
-    set guifont=Envy\ Code\ R\ 8" use this font
+    " set guifont=Envy\ Code\ R\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
@@ -114,7 +114,7 @@ if has("gui_running")
     set guioptions-=T
 else
     set background=dark   " adapt colors for dark background
-    colorscheme lucius
+    colorscheme void
     set t_Co=256
 endif
 
@@ -123,7 +123,7 @@ endif
 " Basic Settings
 " ==================================================
 let mapleader=","       " change the leader to be a comma vs slash
-set textwidth=79        " Try this out to see how textwidth helps
+set textwidth=78        " Try this out to see how textwidth helps
 set ch=1                " Make command line two lines high
 set ls=2                " allways show status line
 set tabstop=4           " numbers of spaces of tab character
@@ -388,9 +388,10 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 " ==================================================
 au BufReadPost quickfix map <buffer> <silent> <CR> :.cc <CR> :ccl
 
-" au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-au BufRead *.py compiler nose
-au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+" au BufRead *.py compiler nose
+" au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+au BufRead *.py set tags=tags-py;/
 
 " ==================================================
 " Javascript
@@ -398,7 +399,9 @@ au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
-au BufRead *.js set makeprg=jslint\ %
+au BufRead *.js set textwidth=78
+au BufRead *.js set tags=tags-js;/
+au BufRead *.js set makeprg=/usr/bin/jslint\ --maxlen=78\ --goodparts\ --nomen\ --indent=4\ %
 au BufRead *.js set errorformat=%-P%f,
                     \%-G/*jslint\ %.%#*/,
                     \%*[\ ]%n\ %l\\,%c:\ %m,
@@ -406,21 +409,16 @@ au BufRead *.js set errorformat=%-P%f,
                     \%-GNo\ errors\ found.,
                     \%-Q
 
+autocmd BufRead,BufNewFile *.json set filetype=json
+command Js silent %!jp
+command Jc silent %!jcompress
+autocmd FileType json Js
+
 " ==================================================
 " CSS
 " ==================================================
 
-au BufRead *.css set makeprg=csslint\ %
-au BufRead *.css set errorformat=%A%f:,%C%n:\ warning\ at\ line\ %l\\,\ col\ %c,%C%m,%C%.%#
-" au BufRead *.css set errorformat=%-Gcsslint:\ There%.%#,%A%f:,%C%n:\ %t%\\w%\\+\ at\ line %l\,\ col\ %c,%Z%m,%A%f:,%C%n:\ %t%\\w%\\+\ at\ line %l\,\ col\ %c,%C%m,%-Z%.%#,%-G%.%#
 
-
-" format
-" bookie.css:
-" 1: warning
-" Too many font-size declarations (13), abstraction needed.
-" bookie.css: 1: warning Too many font-size declarations (13), abstraction needed.
-" bookie.css: 2: warning at line 2, col 2 Rule is empty. BODY {
 
 
 " ==================================================
@@ -522,7 +520,7 @@ let g:gist_open_browser_after_post = 1
 " RopeVim
 " http://rope.sourceforge.net/ropevim.html
 " Refactoring engine using python-rope
-source /usr/share/vim/vimfiles/plugin/ropevim.vim
+source /usr/local/ropevim.vim
 let ropevim_codeassist_maxfixes=10
 let ropevim_vim_completion=1
 let ropevim_guess_project=1

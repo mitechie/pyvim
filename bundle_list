@@ -15,10 +15,9 @@ http://github.com/vim-scripts/nginx.vim.git
 git://github.com/mitechie/pyflakes-pathogen.git
 #http://github.com/kevinw/pyflakes-vim.git
 http://github.com/tomtom/tlib_vim.git
-https://github.com/tpope/vim-fugitive.git
-https://github.com/reinh/vim-makegreen.git
-https://github.com/olethanh/Vim-nosecompiler.git
 https://github.com/ap/vim-css-color.git
-#https://github.com/vim-scripts/taglist.vim.git
 https://github.com/Bogdanp/quicksilver.vim.git
 git://github.com/majutsushi/tagbar
+https://github.com/bolasblack/csslint.vim.git
+https://github.com/pangloss/vim-javascript.git
+https://github.com/yui/vim-yui3.git

@@ -2,6 +2,12 @@
 snippet dmp
 	console.log(${1|somevar});
 
+snippet deb
+	debugger;
+
+snippet g
+	get('${1|prop}')
+
 snippet doc
 	/**
 	  * ${1|some_doc}
@@ -17,5 +23,28 @@ snippet clos
 		${1|code}
 	}());
 
-snippet deb
-	debugger;
+snippet setup
+	setUp: function () {
+
+	},
+
+	tearDown: function () {
+
+	},
+
+snippet test
+	test_${1|name}: function () {
+		${2|code}
+	}
+
+snippet true
+	Y.Assert.isTrue(${1|cond}, "${2|text}");
+
+snippet false
+	Y.Assert.isFalse(${1|cond}, "${2|text}");
+
+snippet eq
+	Y.Assert.areEqual(${1|cond1}, ${2|cond2}, "${3|text}");
+
+snippet neq
+	Y.Assert.areNotEqual(${1|cond1}, ${2|cond2}, "${3|text}");
