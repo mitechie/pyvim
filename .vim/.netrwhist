@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/rharding/src/node'
 let g:netrw_dirhist_2='/home/rharding/.offlineimap'
 let g:netrw_dirhist_3='/home/rharding/src/docs/networks'
+let g:netrw_dirhist_4='/home/rharding/launchpad/lp-branches/devel/lib/lp/app/templates'
+let g:netrw_dirhist_5='/home/rharding/src/python-oops-tools'
