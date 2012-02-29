@@ -12,3 +12,52 @@ snippet wpcode
 
 snippet a
 	<a href="${1:link}" title="${2:title}">${3:text}</a>
+
+snippet lpjstest
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	  "http://www.w3.org/TR/html4/strict.dtd">
+	<!--
+	Copyright 2012 Canonical Ltd.  This software is licensed under the
+	GNU Affero General Public License version 3 (see the file LICENSE).
+	-->
+
+	<html>
+	  <head>
+		  <title>Test ${LIBRARY}</title>
+
+		  <!-- YUI and test setup -->
+		  <script type="text/javascript"
+				  src="../../../../../../build/js/yui/yui/yui.js">
+		  </script>
+		  <link rel="stylesheet"
+		  href="../../../../../../build/js/yui/console/assets/console-core.css" />
+		  <link rel="stylesheet"
+		  href="../../../../../../build/js/yui/console/assets/skins/sam/console.css" />
+		  <link rel="stylesheet"
+		  href="../../../../../../build/js/yui/test/assets/skins/sam/test.css" />
+
+		  <script type="text/javascript"
+				  src="../../../../../../build/js/lp/app/testing/testrunner.js"></script>
+
+		  <link rel="stylesheet" href="../../../../app/javascript/testing/test.css" />
+
+		  <!-- Dependencies -->
+		  <!-- <script type="text/javascript" src="../../../../../../build/js/lp/..."></script> -->
+
+		  <!-- The module under test. -->
+		  <script type="text/javascript" src="../${LIBRARY}.js"></script>
+
+		  <!-- Any css assert for this module. -->
+		  <!-- <link rel="stylesheet" href="../assets/${LIBRARY}-core.css" /> -->
+
+		  <!-- The test suite. -->
+		  <script type="text/javascript" src="test_${LIBRARY}.js"></script>
+
+		</head>
+		<body class="yui3-skin-sam">
+			<ul id="suites">
+				<!-- <li>lp.large_indicator.test</li> -->
+				<li>lp.${LIBRARY}.test</li>
+			</ul>
+		</body>
+	</html>

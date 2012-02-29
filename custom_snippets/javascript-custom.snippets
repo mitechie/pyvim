@@ -48,3 +48,61 @@ snippet eq
 
 snippet neq
 	Y.Assert.areNotEqual(${1|cond1}, ${2|cond2}, "${3|text}");
+
+snippet lpjstest
+	/* Copyright (c) 2012, Canonical Ltd. All rights reserved. */
+
+	YUI.add('lp.${LIBRARY}.test', function (Y) {
+
+		var tests = Y.namespace('lp.${LIBRARY}.test');
+		tests.suite = new Y.Test.Suite('${LIBRARY} Tests');
+
+		tests.suite.add(new Y.Test.Case({
+			name: '${LIBRARY}_tests',
+
+			setUp: function () {},
+			tearDown: function () {},
+
+			test_library_exists: function () {
+				Y.Assert.isObject(Y.lp.${LIBRARY},
+					"We should be able to locate the lp.${LIBRARY} module");
+			}
+
+		}));
+
+	}, '0.1', {'requires': ['test', 'console', 'lp.${LIBRARY}']});
+
+snippet doc_attr
+	/**
+	 * @attribute ${1|name}
+	 * @default ${2|default}
+	 * @type ${3|type}
+	 *
+	 */
+
+snippet doc_method
+	/**
+	 * ${1|description}
+	 *
+	 * @method ${2|name}
+	 * @param {${3|type}} ${4|description}
+	 *
+	 */
+
+snippet doc_class
+	/**
+	 * ${1|description}
+	 *
+	 * @class ${2|name}
+	 * @extends ${3|extends}
+	 *
+	 */
+
+snippet doc_module
+	/**
+	 * ${1|description}
+	 *
+	 * @namespace ${2|name}
+	 * @module ${3|module}
+	 *
+	 */

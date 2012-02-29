@@ -12,8 +12,9 @@ http://github.com/vim-scripts/Gist.vim.git
 http://github.com/scrooloose/nerdtree.git
 #http://github.com/vim-scripts/pylint.vim.git
 http://github.com/vim-scripts/nginx.vim.git
-git://github.com/mitechie/pyflakes-pathogen.git
+#git://github.com/mitechie/pyflakes-pathogen.git
 #http://github.com/kevinw/pyflakes-vim.git
+https://github.com/nvie/vim-flake8.git
 http://github.com/tomtom/tlib_vim.git
 https://github.com/ap/vim-css-color.git
 https://github.com/Bogdanp/quicksilver.vim.git
@@ -22,3 +23,4 @@ https://github.com/bolasblack/csslint.vim.git
 https://github.com/pangloss/vim-javascript.git
 https://github.com/yui/vim-yui3.git
 https://github.com/Lokaltog/vim-powerline
+http://github.com/depuracao/vim-darkdevel.git

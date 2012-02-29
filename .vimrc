@@ -107,15 +107,21 @@ if has("gui_running")
     set mousehide
     colorscheme lucius
     colorscheme twilight
-    colorscheme aldmeris 
-    colorscheme void
+    colorscheme aldmeris
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
+
+    " Try to keep backups across sessions
+    set undodir=~/.vim/backups
+    set undofile
 else
     set background=dark   " adapt colors for dark background
-    colorscheme void
     set t_Co=256
+    colorscheme xorium
+    colorscheme lucius
+    colorscheme twilight
+
 endif
 
 
@@ -171,6 +177,9 @@ set pastetoggle=<F11>
 
 " replace the default grep program with ack
 set grepprg=ack-grep
+
+" auto save when focus is lost
+au FocusLost * :wa
 
 " ==================================================
 " Config Specific Settings
@@ -315,7 +324,6 @@ set ignorecase          " ignore case when searching
 set smartcase           " if searching and search contains upper case, make case sensitive search
 
 nmap <silent> <C-N> :silent noh<CR>
-nmap <silent> <C-N> :silent noh<CR>
 
 " Search for potentially strange non-ascii characters
 map <leader>u :match Error /[\x7f-\xff]/<CR>
@@ -430,6 +438,13 @@ map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 " enable html tag folding with ,f
 nnoremap <leader>f Vatzf
 
+
+" ==================================================
+" Git Tricks
+" ==================================================
+" Show the diff in the preview window of the commit during git commit
+autocmd FileType gitcommit DiffGitCached | wincmd p
+
 " ==================================================
 " Syntax Files
 " ==================================================
@@ -500,7 +515,10 @@ ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
 " Pyflakes
 " http://www.vim.org/scripts/script.php?script_id=3161
 " default config for underlines of syntax errors in gvim
-let g:pyflakes_use_quickfix = 0
+" let g:pyflakes_use_quickfix = 0
+
+" Syntastic
+let g:syntastic_python_checker = 'pyflakes'
 
 " Gist - github pastbin
 " http://www.vim.org/scripts/script.php?script_id=2423
@@ -510,6 +528,7 @@ let g:pyflakes_use_quickfix = 0
 " :Gist XXXX (fetch Gist XXXX and load)
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
+
 
 " TwitVim
 " http://vim.sourceforge.net/scripts/script.php?script_id=2204
