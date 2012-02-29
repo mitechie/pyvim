@@ -118,7 +118,6 @@ if has("gui_running")
 else
     set background=dark   " adapt colors for dark background
     set t_Co=256
-    colorscheme xorium
     colorscheme lucius
     colorscheme twilight
 
