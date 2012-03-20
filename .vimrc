@@ -201,10 +201,10 @@ cno jj <c-c>
 map <c-c> <Nop>
 imap <c-c> <Nop>
 
-" ,v brings up my .vimrc
+" ,VV brings up my .vimrc
 " ,V reloads it -- making all changes active (have to save first)
-map <leader>v :sp ~/.vimrc<CR><C-W>_
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+map <leader>V :sp ~/.vimrc<CR><C-W>_
+map <silent> <leader>VV :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " Run Make with ctrl-m or ,m
 map <silent> <leader>m :make<CR>:cw<CR>
@@ -273,10 +273,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-" Hints for other movements
-" <c-w><c-r> rotate window to next spot
-" <c-w><c-x> swap window with current one
-
 " and lets make these all work in insert mode too ( <C-O> makes next cmd
 " happen as if in command mode )
 imap <C-W> <C-O><C-W>
@@ -291,26 +287,6 @@ map <M-.> <C-W><
 
 " F2 close current window (commonly used with my F1/F3 functions)
 noremap <f2> <Esc>:close<CR><Esc>
-
-" mapping to make movements operate on 1 screen line in wrap mode
-" function! ScreenMovement(movement)
-"    if &wrap
-"       return "g" . a:movement
-"    else
-"       return a:movement
-"    endif
-" endfunction
-" onoremap <silent> <expr> j ScreenMovement("j")
-" onoremap <silent> <expr> k ScreenMovement("k")
-" onoremap <silent> <expr> 0 ScreenMovement("0")
-" onoremap <silent> <expr> ^ ScreenMovement("^")
-" onoremap <silent> <expr> $ ScreenMovement("$")
-" nnoremap <silent> <expr> j ScreenMovement("j")
-" nnoremap <silent> <expr> k ScreenMovement("k")
-" nnoremap <silent> <expr> 0 ScreenMovement("0")
-" nnoremap <silent> <expr> ^ ScreenMovement("^")
-" nnoremap <silent> <expr> $ ScreenMovement("$")
-"
 
 " ==================================================
 " Search
@@ -327,19 +303,6 @@ nmap <silent> <C-N> :silent noh<CR>
 " Search for potentially strange non-ascii characters
 map <leader>u :match Error /[\x7f-\xff]/<CR>
 
-" Clean all end of line extra whitespace with ,S
-" Credit: voyeg3r https://github.com/mitechie/pyvim/issues/#issue/1
-" deletes excess space but maintains the list of jumps unchanged
-" for more details see: h keepjumps
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-map <silent><leader>S <esc>:keepjumps call CleanExtraSpaces()<cr>
-
 " ==================================================
 " Completion
 " ==================================================
@@ -354,18 +317,16 @@ set complete+=t
 
 set completeopt+=menuone,longest
 
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:SuperTabLongestHighlight = 1
-let g:SuperTabMidWordCompletion = 1
-
-
 " ==================================================
 " Filetypes
 " ==================================================
 
 " Auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
+" Trying out this trick to get cwd tricks
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
 
 " make the smarty .tpl files html files for our purposes
 au BufNewFile,BufRead *.tpl set filetype=html
@@ -405,16 +366,10 @@ au BufRead *.py set tags=tags-py;/
 " ==================================================
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
-
-au BufRead *.js set textwidth=78
-au BufRead *.js set tags=tags-js;/
-au BufRead *.js set makeprg=/usr/bin/jslint\ --maxlen=78\ --goodparts\ --nomen\ --indent=4\ %
-au BufRead *.js set errorformat=%-P%f,
-                    \%-G/*jslint\ %.%#*/,
-                    \%*[\ ]%n\ %l\\,%c:\ %m,
-                    \%-G\ \ \ \ %.%#,
-                    \%-GNo\ errors\ found.,
-                    \%-Q
+au FileType javascript set errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
+au FileType javascript set makeprg=jshint\ %
+au FileType javascript set textwidth=78
+au FileType javascript set tags=tags-js;/
 
 autocmd BufRead,BufNewFile *.json set filetype=json
 command Js silent %!jp
@@ -462,6 +417,18 @@ autocmd FileType gitcommit DiffGitCached | wincmd p
 " Plugins
 " ==================================================
 
+" CtrlP
+" https://github.com/kien/ctrlp.vim
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.bzr$\|develop-eggs$\|site-packages',
+  \ 'file': '\.pyc$|\.exe$\|\.so$\|\.dll$\|\.swp$',
+  \ 'link': 'download-cache|eggs|yui',
+  \ }
+
+map <leader>gt :CtrlP templates/<cr>
+map <leader>gj :CtrlP static/js/<cr>
+
 " lusty-juggler
 " http://www.vim.org/scripts/script.php?script_id=2050
 nmap <silent> <Leader>b :LustyJuggler<CR>
@@ -494,6 +461,10 @@ autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>:cw<CR>
 " Supertab
 " http://www.vim.org/scripts/script.php?script_id=182
 " :SuperTabHelp
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabMidWordCompletion = 1
 
 " SnipMate
 " http://www.vim.org/scripts/script.php?script_id=2540
@@ -514,10 +485,7 @@ ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
 " Pyflakes
 " http://www.vim.org/scripts/script.php?script_id=3161
 " default config for underlines of syntax errors in gvim
-" let g:pyflakes_use_quickfix = 0
-
-" Syntastic
-let g:syntastic_python_checker = 'pyflakes'
+let g:pyflakes_use_quickfix = 0
 
 " Gist - github pastbin
 " http://www.vim.org/scripts/script.php?script_id=2423
@@ -527,13 +495,6 @@ let g:syntastic_python_checker = 'pyflakes'
 " :Gist XXXX (fetch Gist XXXX and load)
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
-
-
-" TwitVim
-" http://vim.sourceforge.net/scripts/script.php?script_id=2204
-" Twitter/Identica client for vim
-" F7/F8 for loading identica/twitter
-"source ~/.vim/twitvim.vim
 
 " RopeVim
 " http://rope.sourceforge.net/ropevim.html
@@ -548,7 +509,7 @@ let ropevim_extended_complete=1
 " Tagbar
 " https://github.com/majutsushi/tagbar/
 " Show ctags info in the sidebar
-nmap <silent> <leader>l :TagbarToggle<CR>
+nmap <silent> <leader>L :TagbarToggle<CR>
 
 
 " function! CustomCodeAssistInsertMode()
@@ -628,3 +589,17 @@ function! JavaScriptFold()
     endfunction
     setl foldtext=FoldText()
 endfunction
+
+" Clean all end of line extra whitespace with ,S
+" Credit: voyeg3r https://github.com/mitechie/pyvim/issues/#issue/1
+" deletes excess space but maintains the list of jumps unchanged
+" for more details see: h keepjumps
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+map <silent><leader>S <esc>:keepjumps call CleanExtraSpaces()<cr>
+

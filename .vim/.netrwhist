@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/rharding/src/bookie/bookie/lib/python2.7/site-packages/PasteDeploy-1.5.0-py2.7.egg-info'
 let g:netrw_dirhist_2='/home/rharding/src/convoy/convoy'
 let g:netrw_dirhist_3='/home/rharding/launchpad/lp-branches/watch_jsbuild/lib/lp/app/javascript/anim'
+let g:netrw_dirhist_4='/home/rharding/src/docs/minime'
+let g:netrw_dirhist_5='/home/rharding/src/bookie/bookie/bookie/static/js/bookie'
+let g:netrw_dirhist_6='/home/rharding/configs/pyvim/.vim/bundle/jshint.vim/plugin'
+let g:netrw_dirhist_7='/home/rharding/src/bookie/bookie/jsdoc'
+let g:netrw_dirhist_8='/etc/apt/sources.list.d'
