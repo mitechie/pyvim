@@ -108,6 +108,7 @@ if has("gui_running")
     colorscheme lucius
     colorscheme twilight
     colorscheme aldmeris
+    colorscheme solarized
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -157,7 +158,7 @@ set spell
 set expandtab           " tabs are converted to spaces, use only when required
 set sm                  " show matching braces, somewhat annoying...
 
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%{fugitive#statusline()}%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 hi StatusLine guifg=#fcf4ba guibg=#333333
 hi StatusLineNC guifg=#808080 guibg=#333333
 
@@ -196,6 +197,9 @@ endif
 " Maps for jj to act as Esc
 ino jj <esc>
 cno jj <c-c>
+
+" Map ;; to swap out the file with the previous one
+nnoremap ;; <c-^>
 
 " map ctrl-c to something else so I quick using it
 map <c-c> <Nop>
@@ -428,6 +432,21 @@ let g:ctrlp_custom_ignore = {
 
 map <leader>gt :CtrlP templates/<cr>
 map <leader>gj :CtrlP static/js/<cr>
+
+" Fugative
+" https://github.com/tpope/vim-fugitive
+"
+" Commands:
+" Gedit
+" Gsplit
+" Gvsplit
+" GStatus
+" Gblame
+" Gmove
+" Gremove
+" Ggrep
+" Gwrite
+" Gbrowse
 
 " lusty-juggler
 " http://www.vim.org/scripts/script.php?script_id=2050
