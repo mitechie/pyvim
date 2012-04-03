@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/rharding/src/wadllib/datetime-924240/src/wadllib/tests/data'
 let g:netrw_dirhist_2='/home/rharding/configs/pyvim'
+let g:netrw_dirhist_3='/home/rharding/src/shownotes/shownotes'
+let g:netrw_dirhist_4='/home/rharding/launchpad/lp-sourcedeps/eggs/lazr.lifecycle-1.1-py2.6.egg/lazr/lifecycle'
+let g:netrw_dirhist_5='/home/rharding/launchpad/lp-branches/email_notice_959482'
+let g:netrw_dirhist_6='/home/rharding/launchpad/lp-branches/email_notice_959482/lib'

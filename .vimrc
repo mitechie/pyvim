@@ -12,8 +12,8 @@
 " ==================================================
 " jj - esc
 " ,b - bufferlist
-" ,v - load .vimrc
-" ,V - reload .vimrc
+" ,V - load .vimrc
+" ,VV - reload .vimrc
 " ,m - run make
 " ,M - alt make for filetype (pep8 for python, etc)
 " ,y - yank to clipboard
@@ -105,10 +105,11 @@ if has("gui_running")
     set background=dark   " adapt colors for background
     set keymodel=
     set mousehide
-    colorscheme lucius
-    colorscheme twilight
-    colorscheme aldmeris
-    colorscheme solarized
+    " colorscheme lucius
+    " colorscheme twilight
+    " colorscheme aldmeris
+    " colorscheme solarized
+    colorscheme void
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -158,7 +159,7 @@ set spell
 set expandtab           " tabs are converted to spaces, use only when required
 set sm                  " show matching braces, somewhat annoying...
 
-set statusline=%{fugitive#statusline()}%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 hi StatusLine guifg=#fcf4ba guibg=#333333
 hi StatusLineNC guifg=#808080 guibg=#333333
 
@@ -180,6 +181,9 @@ set grepprg=ack-grep
 
 " auto save when focus is lost
 au FocusLost * :wa
+
+" run the current file with F5
+map <F5> <Esc>:w<CR>:!%:p<CR>
 
 " ==================================================
 " Config Specific Settings
@@ -372,7 +376,6 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript set errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 au FileType javascript set makeprg=jshint\ %
-au FileType javascript set textwidth=78
 au FileType javascript set tags=tags-js;/
 
 autocmd BufRead,BufNewFile *.json set filetype=json
@@ -396,6 +399,15 @@ map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 " enable html tag folding with ,f
 nnoremap <leader>f Vatzf
 
+" ==================================================
+" GoLang
+" ==================================================
+" Highlight word and 'K' to get GoDoc output for word.
+au BufRead,BufNewFile *.go set filetype=go
+" ,m will run gomake
+au BufRead *.go set makeprg=gomake
+" ,M will run gofmt on the code to lint it
+autocmd FileType go map <buffer> <leader>M :Fmt<CR>:cw<CR>
 
 " ==================================================
 " Git Tricks
@@ -506,6 +518,16 @@ ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
 " default config for underlines of syntax errors in gvim
 let g:pyflakes_use_quickfix = 0
 
+" tslime
+" https://github.com/evhan/tslime.vim.git
+" let g:tmux_sessionname = "default"
+let g:tmux_windowname = 1
+let g:tmux_panenumber = 0
+nmap <leader>mt :call Send_to_Tmux("make test"."\n")<CR>
+nmap <leader>lt :call Send_to_Tmux("./bin/test -x -cvvt \"test_".expand("%:t:r")."\"\n")<CR>
+nmap <leader>rst :call Send_to_Tmux("rst2html.py ".expand("%")." > /tmp/".expand("%:t:r").".html\n")<CR>
+
+
 " Gist - github pastbin
 " http://www.vim.org/scripts/script.php?script_id=2423
 " :Gist
@@ -571,6 +593,7 @@ nmap <silent> <leader>L :TagbarToggle<CR>
 " endfunction
 "
 " autocmd FileType python map <buffer> <leader>t :call MakeArgs()<CR>
+
 "
 " ==================================================
 " Custom Functions
