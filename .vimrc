@@ -104,7 +104,7 @@ if has("gui_running")
     set columns=180       " width = 100 columns
     set background=dark   " adapt colors for background
     set keymodel=
-    set mousehide
+    set nomousehide
     " colorscheme lucius
     " colorscheme twilight
     " colorscheme aldmeris
