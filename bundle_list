@@ -17,7 +17,6 @@ http://github.com/vim-scripts/nginx.vim.git
 https://github.com/nvie/vim-flake8.git
 http://github.com/tomtom/tlib_vim.git
 https://github.com/ap/vim-css-color.git
-https://github.com/Bogdanp/quicksilver.vim.git
 git://github.com/majutsushi/tagbar
 https://github.com/bolasblack/csslint.vim.git
 https://github.com/pangloss/vim-javascript.git
@@ -30,3 +29,4 @@ https://github.com/tpope/vim-fugitive
 https://github.com/evhan/tslime.vim.git
 https://github.com/kana/vim-smartinput.git
 https://github.com/mitechie/govim.git
+https://github.com/hallison/vim-markdown.git

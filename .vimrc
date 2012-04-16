@@ -98,7 +98,7 @@ filetype plugin indent on " enable loading indent file for filetype
 
 " In GVIM
 if has("gui_running")
-    set guifont=Liberation\ Mono\ 8" use this font
+    set guifont=Liberation\ Mono\ 7" use this font
     " set guifont=Envy\ Code\ R\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
@@ -107,12 +107,13 @@ if has("gui_running")
     set nomousehide
     " colorscheme lucius
     " colorscheme twilight
-    " colorscheme aldmeris
     " colorscheme solarized
-    colorscheme void
+    " colorscheme void
+    colorscheme aldmeris
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
+    set guioptions-=m  "remove menu bar
 
     " Try to keep backups across sessions
     set undodir=~/.vim/backups

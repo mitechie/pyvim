@@ -1,6 +1,6 @@
 " Lucius vim color file
 " Maintainer: Jonathan Filip <jfilip1024@gmail.com>
-" Version: 7.1.0
+" Version: 7.1.1
 
 hi clear
 if exists("syntax_on")
@@ -39,7 +39,7 @@ let colors_name="lucius"
 " 
 " Screenshots of version 7:
 " 
-" * Dark: http://i.imgur.com/ktdFm.png
+" * Dark: http://i.imgur.com/tgUsz.png
 " * DarkDim: http://i.imgur.com/0bOCv.png
 " * Light: http://i.imgur.com/ndd9A.png
 " 
@@ -151,6 +151,7 @@ if g:lucius_style == "dark"
     hi ErrorMsg     guifg=#ff5f5f   guibg=NONE      ctermfg=203    ctermbg=NONE      gui=none      cterm=none
     hi SignColumn   guifg=#b2b2b2   guibg=#4e4e4e   ctermfg=249    ctermbg=239       gui=none      cterm=none
     hi LineNr       guifg=#626262   guibg=#444444   ctermfg=241    ctermbg=238       gui=none      cterm=none
+    hi CursorLineNr guifg=#626262   guibg=#444444   ctermfg=241    ctermbg=238       gui=none      cterm=none
     hi MoreMsg      guifg=#5fd7d7   guibg=NONE      ctermfg=80     ctermbg=NONE      gui=none      cterm=none
     hi ModeMsg      guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
     hi Question     guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
@@ -235,6 +236,7 @@ elseif g:lucius_style == "dark_dim"
     hi ErrorMsg     guifg=#d75f5f   guibg=NONE      ctermfg=167    ctermbg=NONE      gui=none      cterm=none
     hi SignColumn   guifg=#8a8a8a   guibg=#4e4e4e   ctermfg=245    ctermbg=239       gui=none      cterm=none
     hi LineNr       guifg=#626262   guibg=#444444   ctermfg=241    ctermbg=238       gui=none      cterm=none
+    hi CursorLineNr guifg=#626262   guibg=#444444   ctermfg=241    ctermbg=238       gui=none      cterm=none
     hi MoreMsg      guifg=#00afaf   guibg=NONE      ctermfg=37     ctermbg=NONE      gui=none      cterm=none
     hi ModeMsg      guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
     hi Question     guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
@@ -247,7 +249,7 @@ elseif g:lucius_style == "dark_dim"
 elseif g:lucius_style == "light"
 
 
-    hi Normal       guifg=#3a3a3a   guibg=#eeeeee   ctermfg=237    ctermbg=255       gui=none      cterm=none
+    hi Normal       guifg=#444444   guibg=#eeeeee   ctermfg=238    ctermbg=255       gui=none      cterm=none
 
     hi Comment      guifg=#808080   guibg=NONE      ctermfg=244    ctermbg=NONE      gui=none      cterm=none
 
@@ -271,8 +273,8 @@ elseif g:lucius_style == "light"
 
     " ## Text Markup ##
     hi Underlined   guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=underline cterm=underline
-    hi Error        guifg=#af0000   guibg=#ffafaf   ctermfg=124    ctermbg=217       gui=none      cterm=none
-    hi Todo         guifg=#875f00   guibg=#ffff87   ctermfg=94     ctermbg=228       gui=none      cterm=none
+    hi Error        guifg=#af0000   guibg=#d7afaf   ctermfg=124    ctermbg=181       gui=none      cterm=none
+    hi Todo         guifg=#875f00   guibg=#ffffaf   ctermfg=94     ctermbg=229       gui=none      cterm=none
     hi MatchParen   guifg=NONE      guibg=#5fd7d7   ctermfg=NONE   ctermbg=80        gui=none      cterm=none
     hi NonText      guifg=#afafd7   guibg=NONE      ctermfg=146    ctermbg=NONE      gui=none      cterm=none
     hi SpecialKey   guifg=#afd7af   guibg=NONE      ctermfg=151    ctermbg=NONE      gui=none      cterm=none
@@ -319,6 +321,7 @@ elseif g:lucius_style == "light"
     hi ErrorMsg     guifg=#af0000   guibg=NONE      ctermfg=124    ctermbg=NONE      gui=none      cterm=none
     hi SignColumn   guifg=#626262   guibg=#d0d0d0   ctermfg=241    ctermbg=252       gui=none      cterm=none
     hi LineNr       guifg=#9e9e9e   guibg=#dadada   ctermfg=247    ctermbg=253       gui=none      cterm=none
+    hi CursorLineNr guifg=#9e9e9e   guibg=#dadada   ctermfg=247    ctermbg=253       gui=none      cterm=none
     hi MoreMsg      guifg=#005fd7   guibg=NONE      ctermfg=26     ctermbg=NONE      gui=none      cterm=none
     hi ModeMsg      guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
     hi Question     guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none

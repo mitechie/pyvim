@@ -6,8 +6,8 @@ import os
 import subprocess
 
 # command to run:
-# ln -s /home/rharding/configs/pyvim/vimrc ~/.vimrc
-# ln -s /home/rharding/configs/pyvim/vim ~/.vim
+# ln -s /home/rharding/configs/vim/vimrc ~/.vimrc
+# ln -s /home/rharding/configs/vim/vim ~/.vim
 
 
 CONFIG_FILES = ['.vimrc', '.vim']
@@ -46,7 +46,7 @@ def remove_bundles():
 def install_bundles():
     """Read bundles file and git clone each repo into .vim/bundle"""
     bundle_list = open('bundle_list')
-    git_cmd = '/usr/bin/git clone {0} $HOME/configs/pyvim/bundle/{1}'
+    git_cmd = '/usr/bin/git clone {0} $HOME/configs/vim/bundle/{1}'
     for b in bundle_list:
         if not b.startswith('#'):
             dirname_idx = b.rfind('/') + 1
