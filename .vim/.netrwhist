@@ -1,8 +1,8 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/rharding/src/bookie_parser/bookie_parser'
-let g:netrw_dirhist_2='/home/rharding/src/docs/lp'
-let g:netrw_dirhist_3='/home/rharding/launchpad/lp-branches/devel/build'
-let g:netrw_dirhist_4='/home/rharding/launchpad/lp-branches/email_notice_959482/lib/lp'
-let g:netrw_dirhist_5='/home/rharding/src/bookieapi/bookie_api/src'
-let g:netrw_dirhist_6='/home/rharding/.config/awesome'
+let g:netrw_dirhist_1='/home/rharding/src/python-oops-tools/python-oops-tools/src/oopstools'
+let g:netrw_dirhist_2='/etc/rabbitmq/rabbitmq.conf.d'
+let g:netrw_dirhist_3='/home/rharding/src/bookie/bookie/static/js'
+let g:netrw_dirhist_4='/home/rharding/src/python-oops-tools/amqp-oopsdir'
+let g:netrw_dirhist_5='/home/rharding/Dropbox/docs/yui_penguicon'
+let g:netrw_dirhist_6='/home/rharding/launchpad/lp-branches/devel/build/js/lp'

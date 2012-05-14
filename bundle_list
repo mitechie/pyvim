@@ -14,7 +14,7 @@ http://github.com/scrooloose/nerdtree.git
 http://github.com/vim-scripts/nginx.vim.git
 #git://github.com/mitechie/pyflakes-pathogen.git
 #http://github.com/kevinw/pyflakes-vim.git
-https://github.com/nvie/vim-flake8.git
+#https://github.com/nvie/vim-flake8.git
 http://github.com/tomtom/tlib_vim.git
 https://github.com/ap/vim-css-color.git
 git://github.com/majutsushi/tagbar
@@ -30,3 +30,4 @@ https://github.com/evhan/tslime.vim.git
 https://github.com/kana/vim-smartinput.git
 https://github.com/mitechie/govim.git
 https://github.com/hallison/vim-markdown.git
+https://github.com/scrooloose/syntastic.git
