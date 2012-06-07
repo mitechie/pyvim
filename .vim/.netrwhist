@@ -1,8 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/rharding/src/python-oops-tools/python-oops-tools/src/oopstools'
-let g:netrw_dirhist_2='/etc/rabbitmq/rabbitmq.conf.d'
-let g:netrw_dirhist_3='/home/rharding/src/bookie/bookie/static/js'
-let g:netrw_dirhist_4='/home/rharding/src/python-oops-tools/amqp-oopsdir'
-let g:netrw_dirhist_5='/home/rharding/Dropbox/docs/yui_penguicon'
-let g:netrw_dirhist_6='/home/rharding/launchpad/lp-branches/devel/build/js/lp'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/rharding/tmp/django/lib/python2.7/site-packages/django'
+let g:netrw_dirhist_2='/home/rharding/src/maza-server/branches/add_js_tests'

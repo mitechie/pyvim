@@ -368,6 +368,7 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 au BufReadPost quickfix map <buffer> <silent> <CR> :.cc <CR> :ccl
 
 au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+autocmd FileType python map <buffer> <leader>M :SyntasticCheck<CR>
 " au BufRead *.py compiler nose
 " au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 au BufRead *.py set tags=tags-py;/
@@ -379,6 +380,7 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript set errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 au FileType javascript set makeprg=jshint\ %
+autocmd FileType javascript map <buffer> <leader>M :SyntasticCheck<CR>
 au FileType javascript set tags=tags-js;/
 
 autocmd BufRead,BufNewFile *.json set filetype=json
@@ -401,6 +403,8 @@ map <Leader>T :!tidy -config ~/.tidyrc<cr><cr>
 
 " enable html tag folding with ,f
 nnoremap <leader>f Vatzf
+
+map <silent> <leader>g :!google-chrome %<cr>
 
 " ==================================================
 " GoLang
@@ -479,7 +483,7 @@ map <leader>a :NERDTree<CR>
 
 " pep8
 " http://www.vim.org/scripts/script.php?script_id=2914
-autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>:cw<CR>
+" autocmd FileType python map <buffer> <leader>M :call Pep8()<CR>:cw<CR>
 
 
 " python folding jpythonfold.vim
@@ -555,6 +559,21 @@ let ropevim_extended_complete=1
 " Show ctags info in the sidebar
 nmap <silent> <leader>L :TagbarToggle<CR>
 
+" Syntastic
+" Config syntastic
+
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=0
+let g:syntastic_enable_highlighting=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+
+" let g:syntastic_mode_map = { 'mode': 'active',
+"                            \ 'active_filetypes': ['python', 'javascript', 'css', 'coffee', 'go', 'html', 'rst', 'sass', 'yaml'],
+"                            \ 'passive_filetypes': ['make'] }
+
+let g:syntastic_python_checker = 'flake8'
+let g:syntastic_javascript_checker = 'jslint'
 
 " function! CustomCodeAssistInsertMode()
 "     call RopeCodeAssistInsertMode()
