@@ -103,7 +103,7 @@ if has("gui_running")
     " set guifont=Ubuntu\ Mono\ 8" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
-    set background=light   " adapt colors for background
+    set background=light  " adapt colors for background
     set keymodel=
     set nomousehide
     " colorscheme lucius
@@ -111,7 +111,7 @@ if has("gui_running")
     colorscheme solarized
     " colorscheme void
     " colorscheme aldmeris
-    " colorscheme smyc
+    " colorscheme smyck
 
     " To set the toolbars off (icons on top of the screen)
     set guioptions-=T
@@ -121,10 +121,10 @@ if has("gui_running")
     set undodir=~/.vim/backups
     set undofile
 else
-    set background=dark   " adapt colors for dark background
+    set background=light   " adapt colors for dark background
     set t_Co=256
-    colorscheme lucius
-    colorscheme twilight
+    " colorscheme lucius
+    colorscheme solarized
 
 endif
 
@@ -547,7 +547,8 @@ let g:gist_open_browser_after_post = 1
 " RopeVim
 " http://rope.sourceforge.net/ropevim.html
 " Refactoring engine using python-rope
-source /usr/local/ropevim.vim
+" source /usr/local/ropevim.vim
+source /usr/local/share/vim/plugin/ropevim.vim
 let ropevim_codeassist_maxfixes=10
 let ropevim_vim_completion=1
 let ropevim_guess_project=1
