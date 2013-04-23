@@ -98,9 +98,9 @@ filetype plugin indent on " enable loading indent file for filetype
 
 " In GVIM
 if has("gui_running")
-    set guifont=Consolas\ 7" use this font
+    " set guifont=Consolas\ 7" use this font
     " set guifont=Liberation\ Mono\ 7" use this font
-    " set guifont=Ubuntu\ Mono\ 8" use this font
+    set guifont=Ubuntu\ Mono\ 10" use this font
     set lines=75          " height = 50 lines
     set columns=180       " width = 100 columns
     set background=light  " adapt colors for background
@@ -108,9 +108,9 @@ if has("gui_running")
     set nomousehide
     " colorscheme lucius
     " colorscheme twilight
-    colorscheme solarized
+    " colorscheme solarized
     " colorscheme void
-    " colorscheme aldmeris
+    colorscheme aldmeris
     " colorscheme smyck
 
     " To set the toolbars off (icons on top of the screen)
@@ -123,8 +123,8 @@ if has("gui_running")
 else
     set background=light   " adapt colors for dark background
     set t_Co=256
-    " colorscheme lucius
-    colorscheme solarized
+    colorscheme aldmeris
+    " colorscheme solarized
 
 endif
 
@@ -382,6 +382,7 @@ au FileType javascript set errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 au FileType javascript set makeprg=jshint\ %
 autocmd FileType javascript map <buffer> <leader>M :SyntasticCheck<CR>
 au FileType javascript set tags=tags-js;/
+au FileType javascript set formatoptions-=r
 
 autocmd BufRead,BufNewFile *.json set filetype=json
 command Js silent %!jp
@@ -574,7 +575,8 @@ let g:syntastic_loc_list_height=5
 "                            \ 'passive_filetypes': ['make'] }
 
 let g:syntastic_python_checker = 'flake8'
-let g:syntastic_javascript_checker = 'jslint'
+let g:syntastic_python_checker_args='--ignore=E125,E127'
+let g:syntastic_javascript_checker = 'jshint'
 
 " function! CustomCodeAssistInsertMode()
 "     call RopeCodeAssistInsertMode()

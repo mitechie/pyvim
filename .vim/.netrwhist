@@ -1,2 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/rharding/src/docs/lp'
+let g:netrw_dirhist_2='/home/rharding/src/charmworld/charmworld_charm'
+let g:netrw_dirhist_3='/home/rharding/src/charmworld/precise/charmworld/.bzr/branches/garden_charm'
+let g:netrw_dirhist_4='/home/rharding/src/charmworld/precise/charmworld/.bzr'
+let g:netrw_dirhist_5='/home/rharding/tmp/fenchurch'
+let g:netrw_dirhist_6='/home/rharding/src/bookie/lib/python2.7/site-packages/sqlalchemy/dialects'
+let g:netrw_dirhist_7='/home/rharding/src/charmworld/precise/postgresql'
