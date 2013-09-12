@@ -114,8 +114,10 @@ if has("gui_running")
     " colorscheme smyck
 
     " To set the toolbars off (icons on top of the screen)
-    set guioptions-=T
-    set guioptions-=m  "remove menu bar
+    " set guioptions-=T
+    "
+    " set guioptions-=m  "remove menu bar
+    set guioptions=
 
     " Try to keep backups across sessions
     set undodir=~/.vim/backups
