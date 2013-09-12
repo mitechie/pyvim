@@ -123,8 +123,7 @@ if has("gui_running")
 else
     set background=light   " adapt colors for dark background
     set t_Co=256
-    colorscheme aldmeris
-    " colorscheme solarized
+    colorscheme lucius
 
 endif
 
